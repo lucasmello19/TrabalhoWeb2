@@ -64,11 +64,11 @@
                     <!-- Text Sobrenome-->
 
                     <div class="form-group">
-                        <label class="col-md-4 control-label" >Sobrenome</label> 
+                        <label class="col-md-4 control-label" >CPF</label> 
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input name="sobrenome" placeholder="Sobrenome" class="form-control"  type="text">
+                                <input name="cpf" placeholder="XXX.XXX.XXX-XX" class="form-control"  type="text">
                             </div>
                         </div>
                     </div>
@@ -111,12 +111,16 @@
 
                     <!-- Text Cidade-->
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Cidade</label>  
-                        <div class="col-md-4 inputGroupContainer">
+                    <div class="form-group"> 
+                        <label class="col-md-4 control-label">Cidade</label>
+                        <div class="col-md-4 selectContainer">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <input name="cidade" placeholder="Cidade" class="form-control"  type="text">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                <select name="estado" class="form-control selectpicker" >
+                                    <option value=" " >Selecione sua cidade</option>
+                                    <option>Curitiba</option>
+                                    <option>Londrina</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -129,9 +133,9 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                 <select name="estado" class="form-control selectpicker" >
-                                    <option value=" " >Selecione sua cidade</option>
-                                    <option>Curitiba</option>
-                                    <option>Londrina</option>
+                                    <option value=" " >Selecione seu estado</option>
+                                    <option>Paraná</option>
+                                    <option>São Paulo</option>
                                 </select>
                             </div>
                         </div>

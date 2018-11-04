@@ -21,8 +21,7 @@
 
             body {
                 background: #f5f5f5;
-                font-family: 'Varela Round', sans-serif;
-                font-size: 13px;
+               
             }
             .table-wrapper {
                 background: #fff;
