@@ -18,6 +18,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <style type="text/css">
+            
             body {
                 background: #f5f5f5;
                 font-family: 'Varela Round', sans-serif;
@@ -215,7 +216,7 @@
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">						
-                            <h4 class="modal-title">Adicionar reclamações</h4>
+                            <h4 class="modal-title">Adicionar reclamação</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">					
@@ -255,25 +256,25 @@
                         </div>
                         <div class="modal-body">					
                             <div class="form-group">
-                                <label>Nome</label>
+                                <label>Titulo</label>
                                 <input type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
+                                <label>Descrição</label>
                                 <input type="email" class="form-control" required>
                             </div>
-                            <div class="form-group">
-                                <label>Endereço</label>
-                                <textarea class="form-control" required></textarea>
+                            <div class="input-group">
+                                <label>Tipo</label>
+                                <select name="tipo" class="form-control selectpicker" >
+                                    <option value=" " >Selecione o tipo da reclamação</option>
+                                    <option>Defeito</option>
+                                    <option>Atraso</option>
+                                </select>
                             </div>
-                            <div class="form-group">
-                                <label>Telefone</label>
-                                <input type="text" class="form-control" required>
-                            </div>					
                         </div>
                         <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-info" value="Save">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                            <input type="submit" class="btn btn-warning" value="Editar">
                         </div>
                     </form>
                 </div>
@@ -284,7 +285,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form>
-                        <div class="modal-header">						
+                        <div class="modal-header">
                             <h4 class="modal-title">Deletar reclamação</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
