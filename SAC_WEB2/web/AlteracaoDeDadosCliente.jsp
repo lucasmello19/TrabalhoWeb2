@@ -56,7 +56,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input  name="first_name" placeholder="Nome" class="form-control"  type="text">
+                                <input  name="nome" placeholder="Nome" class="form-control"  type="text">
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input name="last_name" placeholder="Sobrenome" class="form-control"  type="text">
+                                <input name="sobrenome" placeholder="Sobrenome" class="form-control"  type="text">
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                <input name="phone" placeholder="(XX)XXX-XXXX" class="form-control" type="text">
+                                <input name="telefone" placeholder="(XX)XXX-XXXX" class="form-control" type="text">
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <input name="address" placeholder="Endereço" class="form-control" type="text">
+                                <input name="endereco" placeholder="Endereço" class="form-control" type="text">
                             </div>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <input name="city" placeholder="Cidade" class="form-control"  type="text">
+                                <input name="cidade" placeholder="Cidade" class="form-control"  type="text">
                             </div>
                         </div>
                     </div>
