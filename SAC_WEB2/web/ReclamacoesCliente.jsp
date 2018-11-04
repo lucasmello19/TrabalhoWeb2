@@ -221,21 +221,21 @@
                         </div>
                         <div class="modal-body">					
                             <div class="form-group">
-                                <label>Nome</label>
+                                <label>Titulo</label>
                                 <input type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
+                                <label>Descrição</label>
                                 <input type="email" class="form-control" required>
                             </div>
-                            <div class="form-group">
-                                <label>Endereço</label>
-                                <textarea class="form-control" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Telefone</label>
-                                <input type="text" class="form-control" required>
-                            </div>					
+                            <div class="input-group">
+                                <label>Tipo</label>
+                                <select name="tipo" class="form-control selectpicker" >
+                                    <option value=" " >Selecione o tipo da reclamação</option>
+                                    <option>Defeito</option>
+                                    <option>Atraso</option>
+                                </select>
+                            </div>				
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -293,8 +293,8 @@
                             <p>Tem certeza que deseja deletar esta reclamação?</p>
                         </div>
                         <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                            <input type="submit" class="btn btn-danger" value="Delete">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                            <input type="submit" class="btn btn-danger" value="Deletar">
                         </div>
                     </form>
                 </div>
