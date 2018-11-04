@@ -18,7 +18,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <style type="text/css">
-            
+
             body {
                 background: #f5f5f5;
                 font-family: 'Varela Round', sans-serif;
@@ -77,8 +77,8 @@
             table.table tr th:last-child {
                 width: 100px;
             }
-            
-            
+
+
             table.table th i {
                 font-size: 13px;
                 margin: 0 5px;
@@ -96,14 +96,14 @@
                 text-decoration: none;
                 outline: none !important;
             }
-      
+
             table.table td a.edit {
                 color: #FFC107;
             }
             table.table td a.delete {
                 color: #F44336;
             }
-       
+
             /* Modal styles */
             .modal .modal-dialog {
                 max-width: 400px;
@@ -137,42 +137,42 @@
                 font-weight: normal;
             }	
         </style>
-        
+
     </head>
     <body>
-        
+
         <!-- menu-->
 
-        
+
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    
+
                     <a class="navbar-brand" href="#">Beibe</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Reclamações</a></li>
+                        <li><a href="ReclamacoesCliente.jsp">Reclamações</a></li>
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Logout</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Conta</a></li>
+                        <li><a href="AlteracaoDeDadosCliente.jsp">Conta</a></li>
                     </ul>
 
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-        
-        
+
+
         <!-- reclamações-->
 
-        
+
         <div class="container">
             <div class="table-wrapper">
                 <div class="table-title">
