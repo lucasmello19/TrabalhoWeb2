@@ -188,19 +188,19 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Endereço</th>
-                            <th>Telefone</th>
+                            <th>Titulo</th>
+                            <th>Descrição</th>
+                            <th>Tipo</th>
+                            <th>Status</th>
                             <th>Editar/Deletar</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Dominique Perrier</td>
-                            <td>dominiqueperrier@mail.com</td>
-                            <td>Obere Str. 57, Berlin, Germany</td>
-                            <td>(313) 555-5735</td>
+                            <td>Produto estragado</td>
+                            <td>O produto chegou estragado em minha casa</td>
+                            <td>Defeito</td>
+                            <td>Em aberto</td>
                             <td>
                                 <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
