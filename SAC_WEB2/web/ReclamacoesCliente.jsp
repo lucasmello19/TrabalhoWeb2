@@ -21,7 +21,7 @@
 
             body {
                 background: #f5f5f5;
-               
+
             }
             .table-wrapper {
                 background: #fff;
@@ -195,7 +195,25 @@
                         </tr>
                     </thead>
                     <tbody>
+                        
+                        <%
+                            for (int i = 0; i < 10; i++) {
+                                out.println("<tr>");
+                                out.println("<td>Produto estragado</td>");
+                                out.println("<td>O produto chegou estragado em minha casa</td>");
+                                   out.println("<td>Defeito</td>");
+                                out.println("<td>Em aberto</td>");
+                                out.println("<td>");
+                                out.println("<a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>");
+                                out.println("<a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>");
+                                out.println("</td>");
+                                out.println("</tr>");
+                                    
+                                
+                            }%>
+                        
                         <tr>
+
                             <td>Produto estragado</td>
                             <td>O produto chegou estragado em minha casa</td>
                             <td>Defeito</td>
