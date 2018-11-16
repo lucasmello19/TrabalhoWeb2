@@ -25,15 +25,8 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li><a href="ReclamacoesCliente.jsp">Reclamações</a></li>
-
-                    </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Logout</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="AlteracaoDeDadosCliente.jsp">Conta</a></li>
                     </ul>
 
                 </div><!-- /.navbar-collapse -->
@@ -47,7 +40,7 @@
             <form class="well form-horizontal" action=" " method="post"  id="contact_form">
                 <fieldset>
 
-                    <legend>Editar</legend>
+                    <legend>Cadastro</legend>
 
                     <!-- Text Nome-->
 
@@ -68,7 +61,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input name="cpf" placeholder="XXX.XXX.XXX-XX" class="form-control"  type="text" disabled>
+                                <input name="cpf" placeholder="XXX.XXX.XXX-XX" class="form-control"  type="text">
                             </div>
                         </div>
                     </div>
@@ -79,7 +72,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input name="email" placeholder="E-Mail" class="form-control"  type="text" disabled>
+                                <input name="email" placeholder="E-Mail" class="form-control"  type="text">
                             </div>
                         </div>
                     </div>
@@ -162,7 +155,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label"></label>
                         <div class="col-md-4">
-                            <button type="submit" class="btn btn-warning" >Editar</button>
+                            <button type="submit" class="btn btn-success" >Enviar</button>
                             <button type="submit" class="btn btn-primary" >Voltar</button>
                         </div>
                     </div>

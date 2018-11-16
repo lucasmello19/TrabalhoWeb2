@@ -26,16 +26,7 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li><a href="ReclamacoesCliente.jsp">Reclamações</a></li>
-
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Logout</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="AlteracaoDeDadosCliente.jsp">Conta</a></li>
-                    </ul>
+           
 
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -43,21 +34,30 @@
     
     <br>
 
-    <br>
    
   <div class="container">
 
       <div class="col-sm-4 col-sm-offset-4 inputGroupContainer">
           <h4 class="text-center text-danger"> Identifique-se para acessar a plataforma! </h4>
-        <form class="form-group well form-horizontal">
+        <form class="form-group well form-horizontal">            
           <h2 class="text-center">Beibe <br> SAC</h2>
+          <hr/>
+          <div class="radio">
+            <label><input type="radio" name="optradio" checked>Sou Cliente</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optradio">Sou Funcionário</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optradio">Sou Gerente</label>
+          </div>
           <br>
-          <input type="text" name="login" required autofocus class="form-control mx-sm-3" placeholder="Login"><br>
+          <input type="text" name="email" required autofocus class="form-control mx-sm-3" placeholder="E-mail"><br>
 
           <input type="password" name="password" value="" required  class="form-control mx-sm-3"  placeholder="Senha"><br>
 
-          <input type="submit" name="submit" value="Login" class="btn btn-primary">
-          <a href="cadastro.php" class="pull-right">Cadastre-se</a>
+          <input type="submit" name="submit" value="Entrar" class="btn btn-primary">
+          <a href="cadastro.jsp" class="pull-right">Cadastre-se</a>
         </form>
       </div>
 
