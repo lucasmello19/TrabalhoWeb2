@@ -163,7 +163,7 @@ public class UsuarioDao {
                 pstm.setInt(13, usuario.getIdCidadeUsuario().getIdCidade());
                 pstm.setInt(14, usuario.getIdEstadoUsuario().getIdEstado());
 
-                usuarios.add(usu);
+                usuarios.add(usuario);
             }
 
         } catch (SQLException ex) {

@@ -19,6 +19,7 @@ public class Usuario implements Serializable {
     private Login loginIdUsuario;
     private Cidade idCidadeUsuario;
     private Estado idEstadoUsuario;
+    private String emailUsuario;
 
     public Usuario() {
     }
@@ -159,6 +160,10 @@ public class Usuario implements Serializable {
 
     public void setIdEstadoUsuario(Estado idEstadoUsuario) {
         this.idEstadoUsuario = idEstadoUsuario;
+    }
+
+    public void setIdPessoa(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
         
 }
