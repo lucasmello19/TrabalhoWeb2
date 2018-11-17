@@ -1,6 +1,7 @@
 package DataAccessObject;
 
    
+import Beans.Perfil;
 import Beans.Usuario;
 import Connection.ConnectionFactory;
 import java.sql.Connection;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class UsuarioDao {
     
-    private static final String SQL_INSERT = "INSERT INTO tb_usuario (nome_completo, cpf, email, rua, numero, bairro, cep, complemento, telefone, senha, fk_perfil_id, fk_) VALUES (?,?,?,?,?,?,?,?,?,?)";
+    private static final String SQL_INSERT = "INSERT INTO tb_usuario (nome_completo, cpf, email, rua, numero, bairro, cep, complemento, telefone, senha, fk_perfil_id, fk_login_id, fk_cidade_id, fk_estado_id) VALUES (?,?,?,?,?,?,?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE tb_usuario SET nome_completo=?, cpf=?, email=?, rua=?, numero=?, barrio=?, complemento=?, telefone=?, senha=? WHERE user_id=?";
     private static final String SQL_REMOVE = "DELETE FROM tb_usuario WHERE user_id=?";
     private static final String SQL_FIND_ALL = "SELECT * FROM tb_usuario";
@@ -27,18 +28,24 @@ public class UsuarioDao {
         try {
             pstm = conn.prepareStatement(SQL_INSERT);
 
+            //nome_completo, cpf, email, rua, numero, bairro, cep, complemento, telefone, senha, 
+            //fk_perfil_id, fk_login_id, fk_cidade_id, fk_estado_id) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            
             //setar os parâmetros referentes aos (?,?,?)
-            pstm.setString(1, usuario.getNomePessoa());
-            pstm.setString(2, usuario.getCpfPessoa());
-            pstm.setString(3, usuario.getEmailPessoa());
-            pstm.setString(4, usuario.getRuaPessoa());
-            pstm.setInt(5, usuario.getNrPessoa());
-            pstm.setString(6, usuario.getBairroPessoa());
-            pstm.setString(7, usuario.getCepPessoa());
-            pstm.setString(8, usuario.getComplementoPessoa());
-            pstm.setString(9, usuario.getTelefonePessoa());
-            pstm.setString(10, usuario.getSenhaLoginPessoa());
-                       
+            pstm.setString(1, usuario.getNomeUsuario());
+            pstm.setString(2, usuario.getCpfUsuario());
+            pstm.setString(3, usuario.getEmailUsuario());
+            pstm.setString(4, usuario.getRuaUsuario());
+            pstm.setInt(5, usuario.getNrUsuario());
+            pstm.setString(6, usuario.getBairroUsuario());
+            pstm.setString(7, usuario.getCepUsuario());
+            pstm.setString(8, usuario.getComplementoUsuario());
+            pstm.setString(9, usuario.getTelefoneUsuario());
+            pstm.setString(10, usuario.getSenhaLoginUsuario());
+            pstm.setInt(11, usuario.getPerfilUsuario().getIdPerfil());
+            pstm.setInt(12, usuario.getLoginIdUsuario().getIdLogin());
+            pstm.setInt(13, usuario.getIdCidadeUsuario().getIdCidade());
+            pstm.setInt(14, usuario.getIdEstadoUsuario().getIdEstado());
 
             result = pstm.executeUpdate(); //retonar um valor int (1 para sucesso e 2 para insucesso) para retornar para a interface gráfica para verificar o sucesso ou na inserção não 
 
@@ -65,13 +72,21 @@ public class UsuarioDao {
 
         try {
             pstm = conn.prepareStatement(SQL_UPDATE);
-
-            //setar os parâmetros referentes aos (?,?,?)
-//            pstm.setString(1, usuario.getNome());
-//            pstm.setString(2, usuario.getSobrenome());
-//            pstm.setString(3, usuario.getTelefone());
-//            pstm.setLong(4, usuario.getUserId());
-
+            pstm.setString(1, usuario.getNomeUsuario());
+            pstm.setString(2, usuario.getCpfUsuario());
+            pstm.setString(3, usuario.getEmailUsuario());
+            pstm.setString(4, usuario.getRuaUsuario());
+            pstm.setInt(5, usuario.getNrUsuario());
+            pstm.setString(6, usuario.getBairroUsuario());
+            pstm.setString(7, usuario.getCepUsuario());
+            pstm.setString(8, usuario.getComplementoUsuario());
+            pstm.setString(9, usuario.getTelefoneUsuario());
+            pstm.setString(10, usuario.getSenhaLoginUsuario());
+            pstm.setInt(11, usuario.getPerfilUsuario().getIdPerfil());
+            pstm.setInt(12, usuario.getLoginIdUsuario().getIdLogin());
+            pstm.setInt(13, usuario.getIdCidadeUsuario().getIdCidade());
+            pstm.setInt(14, usuario.getIdEstadoUsuario().getIdEstado());
+    
             result = pstm.executeUpdate(); //retonar um valor int (1 para sucesso e 2 para insucesso) para retornar para a interface gráfica para verificar o sucesso ou na inserção não 
 
         } catch (SQLException ex) {
@@ -128,13 +143,27 @@ public class UsuarioDao {
             pstm = conn.prepareStatement(SQL_FIND_ALL);
             rs = pstm.executeQuery();
             while (rs.next()) {
-                Usuario usu = new Usuario();//para cada posição do resultset cria um novo usuario
-       
-//                usu.setUserId(rs.getLong("user_id"));//nome coluna bd
-//                usu.setNome(rs.getString("nome_completo")); //nome coluna bd
-//                usu.setTelefone(rs.getString("telefone")); //nome coluna bd
-//
-//                usuarios.add(usu);
+                
+                Usuario usuario = new Usuario();//para cada posição do resultset cria um novo usuario
+                
+                usuario.setIdPessoa(rs.getInt("user_id"));//nome coluna bd
+
+                pstm.setString(1, usuario.getNomeUsuario());
+                pstm.setString(2, usuario.getCpfUsuario());
+                pstm.setString(3, usuario.getEmailUsuario());
+                pstm.setString(4, usuario.getRuaUsuario());
+                pstm.setInt(5, usuario.getNrUsuario());
+                pstm.setString(6, usuario.getBairroUsuario());
+                pstm.setString(7, usuario.getCepUsuario());
+                pstm.setString(8, usuario.getComplementoUsuario());
+                pstm.setString(9, usuario.getTelefoneUsuario());
+                pstm.setString(10, usuario.getSenhaLoginUsuario());
+                pstm.setInt(11, usuario.getPerfilUsuario().getIdPerfil());
+                pstm.setInt(12, usuario.getLoginIdUsuario().getIdLogin());
+                pstm.setInt(13, usuario.getIdCidadeUsuario().getIdCidade());
+                pstm.setInt(14, usuario.getIdEstadoUsuario().getIdEstado());
+
+                usuarios.add(usu);
             }
 
         } catch (SQLException ex) {
