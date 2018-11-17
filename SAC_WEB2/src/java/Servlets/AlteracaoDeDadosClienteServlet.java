@@ -44,11 +44,11 @@ public class AlteracaoDeDadosClienteServlet extends HttpServlet {
 
             String acao = request.getParameter("acao");
             
-            if(acao == "editar" && nome != null){
+            if("editar".equals(acao) && nome != null){
                 RequestDispatcher rd = request.getRequestDispatcher("AlteracaoDeDadosCliente.jsp");
                 request.setAttribute("acao", "editar");
                 rd.forward(request, response);
-            }else if(acao == "criar"){
+            }else if("criar".equals(acao)){
                 RequestDispatcher rd = request.getRequestDispatcher("AlteracaoDeDadosCliente.jsp");
                 request.setAttribute("acao", "criar");
                 rd.forward(request, response);
