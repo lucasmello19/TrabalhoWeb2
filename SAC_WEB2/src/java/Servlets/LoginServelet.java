@@ -5,6 +5,8 @@
  */
 package Servlets;
 
+import Beans.Usuario;
+import DataAccessObject.UsuarioDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,16 +36,64 @@ public class LoginServelet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+           
+            String login = request.getParameter("login");
+            String senha = request.getParameter("senha");
+
+            UsuarioDao userDao = new UsuarioDao();
+//            Boolean retorno = userDao.carregarPessoas(login, senha);
+//            
+//            HttpSession session = request.getSession();
+//            if (retorno) {
+//                
+//                Usuario user = userDao.carregarUsuario(login, senha);
+//                
+//                
+//                
+//                Login loginBean = new Login();
+//                
+//                loginBean.setId(user.getId());
+//                loginBean.setNome(user.getNome());
+//                
+//                session.setAttribute("login", loginBean);
+//
+//                
+//                
+//                session.setAttribute(senha, out);
+//                
+//                session.setAttribute("nome", login);
+//                session.setAttribute("senha", senha);
+//
+//                out.println("<!DOCTYPE html>");
+//                out.println("<html>");
+//                out.println("<head>");
+//                out.println("<title>Servlet LoginServlet</title>");            
+//                out.println("</head>");
+//                out.println("<body>");
+//                out.println("<h1>Logado com sucesso </h1>");
+//                out.println("<p><a href=PortalServlet>PORTAL</a></p>");
+//                out.println("</body>");
+//                out.println("</html>");
+//            } else {
+//               request.setAttribute("page", "index.html");
+//
+//               request.setAttribute("msg", "Login incorreto");
+//               request.getRequestDispatcher("erroServlet").forward(request, response); 
+//
+//                
+////                out.println("<!DOCTYPE html>");
+////                out.println("<html>");
+////                out.println("<head>");
+////                out.println("<title>Servlet LoginServlet</title>");            
+////                out.println("</head>");
+////                out.println("<body>");
+////                out.println("<h1>Usuario nao cadastrado </h1>");
+////                out.println("<p><a href=index.html>LOGIN</a></p>");
+////                out.println("</body>");
+////                out.println("</html>");
+//            }
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServelet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginServelet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            
         }
     }
 
