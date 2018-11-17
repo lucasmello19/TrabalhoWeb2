@@ -1,13 +1,15 @@
 <%-- 
-    Document   : AtendimentosFuncionario
-    Created on : 16/11/2018, 17:16:40
+    Document   : CadastroCategorias
+    Created on : 17/11/2018, 12:02:33
     Author     : Michael
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>  
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,13 +72,6 @@
                 padding: 12px 15px;
                 vertical-align: middle;
             }
-            table.table tr th:first-child {
-                width: 60px;
-            }
-            table.table tr th:last-child {
-                width: 100px;
-            }
-
 
             table.table th i {
                 font-size: 13px;
@@ -158,26 +153,12 @@
                 }
             }
 
-            var $table = $('#table');
-            $(function () {
-                $('#toolbar').find('select').change(function () {
-                    $table.bootstrapTable('refreshOptions', {
-                        exportDataType: $(this).val()
-                    });
-                });
-            })
-
-            var trBoldBlue = $("table");
-
-            $(trBoldBlue).on("click", "tr", function () {
-                $(this).toggleClass("bold-blue");
-            });
+            
         </script>
         <title>SAC Beibe</title>
     </head>
     <body>
-
-        <!-- menu-->
+        <!-- restante da tela-->
 
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -190,11 +171,11 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Atendimentos</a></li>
+                        <li><a href="/SAC_WEB2/AtendimentosFuncionario.jsp">Atendimentos</a></li>
 
                     </ul>
                     <ul class="nav navbar-nav">
-                        <li><a href="/SAC_WEB2/CategoriasFuncionario.jsp">Categorias</a></li>
+                        <li><a href="#">Categorias</a></li>
 
                     </ul>
                     <ul class="nav navbar-nav">
@@ -209,25 +190,18 @@
             </div><!-- /.container-fluid -->
         </nav>
 
-
-        <!-- atendimentos-->
-
-
         <div class="container">
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
-                        <div class="col-sm-8">
-                            <h2>Atendimentos</h2>
+                        <div class="col-sm-6">
+                            <h2>Categorias</h2>
                         </div>
                         <div class="col-sm-2">
                             <input class="form-control" id="myInput" onkeyup="myFunction()" type="text" placeholder="Buscar...">
                         </div>
-                        <div class="col-sm-2" id="toolbar">
-                            <select class="form-control">
-                                <option value="abertos">Em aberto</option>
-                                <option value="todos">Todos</option>
-                            </select>
+                        <div class="col-sm-4">
+                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Adicionar nova Categoria</span></a>
                         </div>
                     </div>
                 </div>
@@ -236,38 +210,51 @@
                         <tr>
                             <th>Titulo</th>
                             <th>Descrição</th>
-                            <th>Tipo</th>
-                            <th>Status</th>
-                            <th>Ação</th>
+                            <th>Editar/Deletar</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <%
-                            for (int i = 0; i < 10; i++) {
+                            for (int i = 0; i < 3; i++) {
                                 out.println("<tr>");
-                                out.println("<td>Produto estragado</td>");
-                                out.println("<td>O produto chegou estragado em minha casa</td>");
-                                out.println("<td>Defeito</td>");
-                                out.println("<td>Em aberto</td>");
+                                out.println("<td>Vestuário</td>");
+                                out.println("<td>Roupas em geral</td>");
                                 out.println("<td>");
-                                out.println("<a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Atender'>&#xe0cd;</i></a>");
+                                out.println("<a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>");
+                                out.println("<a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>");
                                 out.println("</td>");
                                 out.println("</tr>");
                             }%>
-
-                        <tr>
-
-                            <td>teste busca</td>
-                            <td>categoria ruim</td>
-                            <td>Defeito</td>
-                            <td>Finalizado</td>
-                            <td>
-                                <a class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Finalizado">&#xe5cd;</i></a>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <!-- Edit Modal HTML -->
+        <div id="addEmployeeModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">						
+                            <h4 class="modal-title">Adicionar Categoria</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">					
+                            <div class="form-group">
+                                <label>Titulo</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Descrição</label>
+                                <input type="email" class="form-control" required>
+                            </div>				
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                            <input type="submit" class="btn btn-success" value="Add">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <!-- Edit Modal HTML -->
@@ -276,23 +263,47 @@
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">						
-                            <h4 class="modal-title">Resolver Chamado</h4>
+                            <h4 class="modal-title">Editar Categoria</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">					
                             <div class="form-group">
-                                <label>Comentário</label>
+                                <label>Titulo</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Descrição</label>
                                 <input type="text" class="form-control" required>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                            <input type="submit" class="btn btn-success" value="Finalizar">
+                            <input type="submit" class="btn btn-warning" value="Editar">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        
-    </body>
-</html> 
+        <!-- Delete Modal HTML -->
+        <div id="deleteEmployeeModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Deletar Categoria</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">					
+                            <p>Tem certeza que deseja deletar esta Categoria?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                            <input type="submit" class="btn btn-danger" value="Deletar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+ 
+</body>
+</html>
