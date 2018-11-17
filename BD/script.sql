@@ -5,32 +5,23 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema web2
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `mydb` ;
+DROP SCHEMA IF EXISTS `web2` ;
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema web2
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
--- -----------------------------------------------------
--- Schema Web2
--- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `Web2` ;
+CREATE SCHEMA IF NOT EXISTS `web2` DEFAULT CHARACTER SET utf8 ;
+USE `web2` ;
 
 -- -----------------------------------------------------
--- Schema Web2
+-- Table `web2`.`tb_perfil`
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `Web2` DEFAULT CHARACTER SET latin1 ;
-USE `mydb` ;
+DROP TABLE IF EXISTS `Web2`.`tb_perfil` ;
 
--- -----------------------------------------------------
--- Table `mydb`.`tb_perfil`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tb_perfil` ;
-
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_perfil` (
-  `perfil_id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `web2`.`tb_perfil` (
+  `perfil_id` INT NOT NULL AUTO_INCREMENT,
   `descricao` CHAR(1) NOT NULL,
   PRIMARY KEY (`perfil_id`),
   UNIQUE INDEX `perfil_id_UNIQUE` (`perfil_id` ASC))
@@ -38,12 +29,12 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tb_login`
+-- Table `web2`.`tb_login`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tb_login` ;
+DROP TABLE IF EXISTS `Web2`.`tb_login` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_login` (
-  `login_id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `Web2`.`tb_login` (
+  `login_id` INT NOT NULL AUTO_INCREMENT,
   `senha` VARCHAR(15) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`login_id`),
@@ -52,12 +43,12 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tb_estado`
+-- Table `web2`.`tb_estado`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tb_estado` ;
+DROP TABLE IF EXISTS `Web2`.`tb_estado` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_estado` (
-  `estado_id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `Web2`.`tb_estado` (
+  `estado_id` INT NOT NULL AUTO_INCREMENT,
   `sigla` CHAR(2) NULL,
   `nome` VARCHAR(100) NULL,
   PRIMARY KEY (`estado_id`),
@@ -66,12 +57,12 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tb_cidade`
+-- Table `web2`.`tb_cidade`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tb_cidade` ;
+DROP TABLE IF EXISTS `web2`.`tb_cidade` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_cidade` (
-  `cidade_id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `web2`.`tb_cidade` (
+  `cidade_id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(100) NULL,
   `fk_estado_id` INT NOT NULL,
   PRIMARY KEY (`cidade_id`, `fk_estado_id`),
@@ -79,19 +70,19 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tb_cidade` (
   INDEX `fk_tb_cidade_tb_estado1_idx` (`fk_estado_id` ASC),
   CONSTRAINT `fk_tb_cidade_tb_estado1`
     FOREIGN KEY (`fk_estado_id`)
-    REFERENCES `mydb`.`tb_estado` (`estado_id`)
+    REFERENCES `web2`.`tb_estado` (`estado_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tb_usuario`
+-- Table `web2`.`tb_usuario`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tb_usuario` ;
+DROP TABLE IF EXISTS `web2`.`tb_usuario` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_usuario` (
-  `user_id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `web2`.`tb_usuario` (
+  `user_id` INT NOT NULL AUTO_INCREMENT,
   `nome_completo` VARCHAR(100) NOT NULL,
   `cpf` VARCHAR(15) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
@@ -113,29 +104,28 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tb_usuario` (
   INDEX `fk_tb_usuario_tb_cidade1_idx` (`fk_cidade_id` ASC, `fk_estado_id` ASC),
   CONSTRAINT `fk_tb_usuario_tb_perfil1`
     FOREIGN KEY (`fk_perfil_id`)
-    REFERENCES `mydb`.`tb_perfil` (`perfil_id`)
+    REFERENCES `web2`.`tb_perfil` (`perfil_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tb_usuario_tb_login1`
     FOREIGN KEY (`fk_login_id`)
-    REFERENCES `mydb`.`tb_login` (`login_id`)
+    REFERENCES `web2`.`tb_login` (`login_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tb_usuario_tb_cidade1`
     FOREIGN KEY (`fk_cidade_id` , `fk_estado_id`)
-    REFERENCES `mydb`.`tb_cidade` (`cidade_id` , `fk_estado_id`)
+    REFERENCES `web2`.`tb_cidade` (`cidade_id` , `fk_estado_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table `mydb`.`tb_categoria`
+-- Table `web2`.`tb_categoria`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tb_categoria` ;
+DROP TABLE IF EXISTS `web2`.`tb_categoria` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_categoria` (
-  `categ_id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `web2`.`tb_categoria` (
+  `categ_id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`categ_id`),
   UNIQUE INDEX `categ_id_UNIQUE` (`categ_id` ASC))
@@ -143,12 +133,12 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tb_produto`
+-- Table `web2`.`tb_produto`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tb_produto` ;
+DROP TABLE IF EXISTS `web2`.`tb_produto` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_produto` (
-  `produto_id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `web2`.`tb_produto` (
+  `produto_id` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(100) NULL,
   `peso` INT NOT NULL,
   `fk_categ_id` INT NOT NULL,
@@ -158,19 +148,18 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tb_produto` (
   UNIQUE INDEX `produto_id_UNIQUE` (`produto_id` ASC),
   CONSTRAINT `fk_tb_produto_tb_categoria1`
     FOREIGN KEY (`fk_categ_id`)
-    REFERENCES `mydb`.`tb_categoria` (`categ_id`)
+    REFERENCES `web2`.`tb_categoria` (`categ_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
--- Table `mydb`.`tb_tipo_atendimento`
+-- Table `web2`.`tb_tipo_atendimento`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tb_tipo_atendimento` ;
+DROP TABLE IF EXISTS `web2`.`tb_tipo_atendimento` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_tipo_atendimento` (
-  `tipo_atend_id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `web2`.`tb_tipo_atendimento` (
+  `tipo_atend_id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`tipo_atend_id`),
   UNIQUE INDEX `tipoAtend_id_UNIQUE` (`tipo_atend_id` ASC))
@@ -178,12 +167,12 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tb_atendimento`
+-- Table `web2`.`tb_atendimento`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`tb_atendimento` ;
+DROP TABLE IF EXISTS `web2`.`tb_atendimento` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_atendimento` (
-  `atendimento_id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `web2`.`tb_atendimento` (
+  `atendimento_id` INT NOT NULL AUTO_INCREMENT,
   `dataHora_inicio` DATETIME NOT NULL,
   `fk_tipoAtend_id` INT NOT NULL,
   `fk_user_id` INT NOT NULL,
@@ -202,37 +191,20 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tb_atendimento` (
   UNIQUE INDEX `atendimento_id_UNIQUE` (`atendimento_id` ASC),
   CONSTRAINT `fk_tb_atendimento_tb_tipoAtendimento`
     FOREIGN KEY (`fk_tipoAtend_id`)
-    REFERENCES `mydb`.`tb_tipo_atendimento` (`tipo_atend_id`)
+    REFERENCES `web2`.`tb_tipo_atendimento` (`tipo_atend_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tb_atendimento_tb_usuario1`
     FOREIGN KEY (`fk_user_id` , `fk_perfil_id` , `fk_login_id`)
-    REFERENCES `mydb`.`tb_usuario` (`user_id` , `fk_perfil_id` , `fk_login_id`)
+    REFERENCES `web2`.`tb_usuario` (`user_id` , `fk_perfil_id` , `fk_login_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tb_atendimento_tb_produto1`
     FOREIGN KEY (`fk_produto_id` , `fk_categ_id`)
-    REFERENCES `mydb`.`tb_produto` (`produto_id` , `fk_categ_id`)
+    REFERENCES `web2`.`tb_produto` (`produto_id` , `fk_categ_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-USE `Web2` ;
-
--- -----------------------------------------------------
--- Table `Web2`.`tb_usuario`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `Web2`.`tb_usuario` ;
-
-CREATE TABLE IF NOT EXISTS `Web2`.`tb_usuario` (
-  `id_usuario` INT(11) NOT NULL AUTO_INCREMENT,
-  `login_usuario` VARCHAR(50) NOT NULL,
-  `senha_usuario` VARCHAR(45) NOT NULL,
-  `nome_usuario` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id_usuario`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 4
-DEFAULT CHARACTER SET = latin1;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
