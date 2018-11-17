@@ -7,11 +7,15 @@ package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,15 +38,25 @@ public class AlteracaoDeDadosClienteServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AlteracaoDeDadosClienteServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AlteracaoDeDadosClienteServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            
+            HttpSession session = request.getSession();
+            String nome = (String)session.getAttribute("nome");
+
+            String acao = request.getParameter("acao");
+            
+            if(acao == "editar" && nome != null){
+                RequestDispatcher rd = request.getRequestDispatcher("AlteracaoDeDadosCliente.jsp");
+                request.setAttribute("acao", "editar");
+                rd.forward(request, response);
+            }else if(acao == "criar"){
+                RequestDispatcher rd = request.getRequestDispatcher("AlteracaoDeDadosCliente.jsp");
+                request.setAttribute("acao", "criar");
+                rd.forward(request, response);
+            }else{
+                RequestDispatcher rd = request.getRequestDispatcher("LoginServlet");
+                rd.forward(request, response);
+            }
+
         }
     }
 
