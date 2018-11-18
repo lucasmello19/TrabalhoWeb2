@@ -4,6 +4,8 @@
     Author     : LucasMello
 --%>
 
+<%@page import="Beans.Atendimento"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -158,7 +160,7 @@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="LogoutServlet">Logout</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="AlteracaoDeDadosCliente.jsp">Conta</a></li>
@@ -195,34 +197,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
-                        <%
-                            for (int i = 0; i < 10; i++) {
-                                out.println("<tr>");
-                                out.println("<td>Produto estragado</td>");
-                                out.println("<td>O produto chegou estragado em minha casa</td>");
-                                   out.println("<td>Defeito</td>");
-                                out.println("<td>Em aberto</td>");
-                                out.println("<td>");
-                                out.println("<a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>");
-                                out.println("<a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>");
-                                out.println("</td>");
-                                out.println("</tr>");
-                                    
-                                
-                            }%>
-                        
-                        <tr>
 
-                            <td>Produto estragado</td>
-                            <td>O produto chegou estragado em minha casa</td>
-                            <td>Defeito</td>
-                            <td>Em aberto</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr>
+                        <%
+
+                            List<Atendimento> list = (List<Atendimento>) request.getAttribute("list");
+
+                            if (list != null) {
+                                for (int i = 0; i < list.size(); i++) {
+
+                                    Atendimento a = list.get(i);
+
+                                    out.println("<tr>");
+                                    out.println("<td>" + a.getSituacaoAtendimento() + "</td>");
+                                    out.println("<td>" + a.getSolucaoAtendimento() + "</td>");
+                                    out.println("<td>Defeito</td>");
+                                    out.println("<td>Em aberto</td>");
+                                    out.println("<td>");
+                                    out.println("<a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>");
+                                    out.println("<a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>");
+                                    out.println("</td>");
+                                    out.println("</tr>");
+
+                                }
+                            }
+
+                        %>
                     </tbody>
                 </table>
             </div>
