@@ -7,12 +7,12 @@ public class Atendimento {
     private Integer idAtendimento;
     private Timestamp dtHoraInicioAtendimento;
     private Timestamp dtHoraFimAtendimento;
-    private TipoAtendimento idTipoAtendimento;
-    private Usuario idUsuAtendimento;
-    private Perfil idPerfilUsuAtendimento;
-    private Login idLoginUsuAtendimento; 
-    private Produto idProdAtendimento;
-    private Categoria idCategoriaAtendimento;
+    private Integer idTipoAtendimento;
+    private Integer idUsuAtendimento;
+    private Integer idPerfilUsuAtendimento;
+    private Integer idLoginUsuAtendimento; 
+    private Integer idProdAtendimento;
+    private Integer idCategoriaAtendimento;
     private String situacaoAtendimento;          
     private String descAtendimento;
     private String solucaoAtendimento;
@@ -20,7 +20,7 @@ public class Atendimento {
     public Atendimento() {
     }
 
-    public Atendimento(Integer idAtendimento, Timestamp dtHoraInicioAtendimento, Timestamp dtHoraFimAtendimento, TipoAtendimento idTipoAtendimento, Usuario idUsuAtendimento, Perfil idPerfilUsuAtendimento, Login idLoginUsuAtendimento, Produto idProdAtendimento, Categoria idCategoriaAtendimento, String situacaoAtendimento, String descAtendimento, String solucaoAtendimento) {
+    public Atendimento(Integer idAtendimento, Timestamp dtHoraInicioAtendimento, Timestamp dtHoraFimAtendimento, Integer idTipoAtendimento, Integer idUsuAtendimento, Integer idPerfilUsuAtendimento, Integer idLoginUsuAtendimento, Integer idProdAtendimento, Integer idCategoriaAtendimento, String situacaoAtendimento, String descAtendimento, String solucaoAtendimento) {
         this.idAtendimento = idAtendimento;
         this.dtHoraInicioAtendimento = dtHoraInicioAtendimento;
         this.dtHoraFimAtendimento = dtHoraFimAtendimento;
@@ -59,51 +59,51 @@ public class Atendimento {
         this.dtHoraFimAtendimento = dtHoraFimAtendimento;
     }
 
-    public TipoAtendimento getIdTipoAtendimento() {
+    public Integer getIdTipoAtendimento() {
         return idTipoAtendimento;
     }
 
-    public void setIdTipoAtendimento(TipoAtendimento idTipoAtendimento) {
+    public void setIdTipoAtendimento(Integer idTipoAtendimento) {
         this.idTipoAtendimento = idTipoAtendimento;
     }
 
-    public Usuario getIdUsuAtendimento() {
+    public Integer getIdUsuAtendimento() {
         return idUsuAtendimento;
     }
 
-    public void setIdUsuAtendimento(Usuario idUsuAtendimento) {
+    public void setIdUsuAtendimento(Integer idUsuAtendimento) {
         this.idUsuAtendimento = idUsuAtendimento;
     }
 
-    public Perfil getIdPerfilUsuAtendimento() {
+    public Integer getIdPerfilUsuAtendimento() {
         return idPerfilUsuAtendimento;
     }
 
-    public void setIdPerfilUsuAtendimento(Perfil idPerfilUsuAtendimento) {
+    public void setIdPerfilUsuAtendimento(Integer idPerfilUsuAtendimento) {
         this.idPerfilUsuAtendimento = idPerfilUsuAtendimento;
     }
 
-    public Login getIdLoginUsuAtendimento() {
+    public Integer getIdLoginUsuAtendimento() {
         return idLoginUsuAtendimento;
     }
 
-    public void setIdLoginUsuAtendimento(Login idLoginUsuAtendimento) {
+    public void setIdLoginUsuAtendimento(Integer idLoginUsuAtendimento) {
         this.idLoginUsuAtendimento = idLoginUsuAtendimento;
     }
 
-    public Produto getIdProdAtendimento() {
+    public Integer getIdProdAtendimento() {
         return idProdAtendimento;
     }
 
-    public void setIdProdAtendimento(Produto idProdAtendimento) {
+    public void setIdProdAtendimento(Integer idProdAtendimento) {
         this.idProdAtendimento = idProdAtendimento;
     }
 
-    public Categoria getIdCategoriaAtendimento() {
+    public Integer getIdCategoriaAtendimento() {
         return idCategoriaAtendimento;
     }
 
-    public void setIdCategoriaAtendimento(Categoria idCategoriaAtendimento) {
+    public void setIdCategoriaAtendimento(Integer idCategoriaAtendimento) {
         this.idCategoriaAtendimento = idCategoriaAtendimento;
     }
 
