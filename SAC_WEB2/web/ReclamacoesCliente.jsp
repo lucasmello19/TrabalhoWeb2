@@ -197,7 +197,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         <%
 
                             List<Atendimento> list = (List<Atendimento>) request.getAttribute("list");
@@ -261,6 +260,9 @@
                 </div>
             </div>
         </div>
+
+
+
         <!-- Edit Modal HTML -->
         <div id="editEmployeeModal" class="modal fade">
             <div class="modal-dialog">
@@ -270,24 +272,36 @@
                             <h4 class="modal-title">Editar Reclamação</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
-                        <div class="modal-body">					
-                            <div class="form-group">
-                                <label>Titulo</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Descrição</label>
-                                <input type="email" class="form-control" required>
-                            </div>
-                            <div class="input-group">
-                                <label>Tipo</label>
-                                <select name="tipo" class="form-control selectpicker" >
-                                    <option value=" " >Selecione o tipo da reclamação</option>
-                                    <option>Defeito</option>
-                                    <option>Atraso</option>
-                                </select>
-                            </div>
-                        </div>
+
+                        <tbody>
+                            <%                             
+                                Atendimento a = list.get(0);
+
+                                out.println("<div class='modal-body'>");
+                                out.println("<div class='form-group'>");
+                                out.println("<label>" + "Titulo" + "</label>");
+                                out.println("<input type='text' class='form-control' required>");
+                                out.println("</div>");
+                                out.println("<div class='form-group>");
+                                out.println("    <label>Descrição</label>");
+                                out.println("   <input type=email' class='form-control required>");
+                                out.println("</div>");
+                                out.println("<div class='input-group'>");
+                                out.println("<label>Tipo</label>");
+                                out.println("<select name='tipo' class='form-control selectpicker' >");
+                                out.println("<option value=' oi'>Selecione o tipo da reclamação</option>");
+                                out.println("<option>Defeito</option>");
+                                out.println("<option>Atraso</option>");
+                                out.println("</select>");
+                                out.println("</div>");
+                                out.println("</div");
+
+
+                            %>
+
+                        </tbody>
+
+
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-warning" value="Editar">
@@ -297,6 +311,7 @@
             </div>
         </div>
         <!-- Delete Modal HTML -->
+
         <div id="deleteEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -318,3 +333,5 @@
         </div>
     </body>
 </html>       
+
+
