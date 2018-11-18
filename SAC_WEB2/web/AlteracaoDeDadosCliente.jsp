@@ -163,7 +163,7 @@
                         <label class="col-md-4 control-label"></label>
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-warning" >Editar</button>
-                            <button type="submit" class="btn btn-primary" >Voltar</button>
+                            <button type="submit" class="btn btn-primary" formaction="ReclamacoesCliente.jsp">Voltar</button>
                         </div>
                     </div>
                 </fieldset>
