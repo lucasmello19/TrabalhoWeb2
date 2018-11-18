@@ -1,13 +1,7 @@
-INSERT INTO tb_tipo_atendimento ( nome_tipo_atendimento) VALUES ('Crítica');
-INSERT INTO tb_tipo_atendimento ( nome_tipo_atendimento) VALUES ('Problema');
-INSERT INTO tb_tipo_atendimento ( nome_tipo_atendimento) VALUES ('Reclamação');
-INSERT INTO tb_tipo_atendimento ( nome_tipo_atendimento) VALUES ('Sugestão');
-
-INSERT INTO tb_categoria (nome) VALUES ('Cosmético facial');
-INSERT INTO tb_categoria (nome) VALUES ('Cosmético de tratamento Facial');
-INSERT INTO tb_categoria (nome) VALUES ('Cosmético corporal');
-INSERT INTO tb_categoria (nome) VALUES ('Esmaltes');
-
+INSERT INTO tb_tipo_atendimento (nome) VALUES ('Reclamação');
+INSERT INTO tb_tipo_atendimento (nome) VALUES ('Sugestão');
+INSERT INTO tb_tipo_atendimento (nome) VALUES ('Crítica');
+INSERT INTO tb_tipo_atendimento (nome) VALUES ('Problema');
 
 INSERT INTO tb_estado VALUES (01, 'AC', 'Acre');
 INSERT INTO tb_estado VALUES (02, 'AL', 'Alagoas');
@@ -37,6 +31,23 @@ INSERT INTO tb_estado VALUES (25, 'SE', 'Sergipe');
 INSERT INTO tb_estado VALUES (26, 'SP', 'São Paulo');
 INSERT INTO tb_estado VALUES (27, 'TO', 'Tocantins');
 
+INSERT INTO tb_categoria (nome) VALUES ('Cosmético facial');
+INSERT INTO tb_categoria (nome) VALUES ('Esmaltes');
+INSERT INTO tb_categoria (nome) VALUES ('Cosmético de tratamento Facial');
+INSERT INTO tb_categoria (nome) VALUES ('Cosmético corporal');
+
+
+INSERT INTO tb_produto (nome, descricao, peso, produto_id, fk_categ_id) VALUES ('Batom','Produto cosmético para os lábios', 10, 1, 1);
+INSERT INTO tb_produto (nome, descricao, peso, produto_id, fk_categ_id)  VALUES ('Rimel', 'Produto cosmético para os cílios', 8, 2, 3);
+INSERT INTO tb_produto (nome, descricao, peso, produto_id, fk_categ_id)  VALUES ('Blush', 'Produto cosmético para a pele', 20, 3, 4);
+INSERT INTO tb_produto (nome, descricao, peso, produto_id, fk_categ_id)  VALUES ('Po compacto', 'Produto cosmético para a pele', 25, 4, 4);
+INSERT INTO tb_produto (nome, descricao, peso, produto_id, fk_categ_id)  VALUES ('Corretivo', 'Produto cosmético para a pele', 15, 5, 4);
+INSERT INTO tb_produto (nome, descricao, peso, produto_id, fk_categ_id)  VALUES ('Iluminador', 'Produto cosmético para a pele', 30, 6, 2);
+INSERT INTO tb_produto (nome, descricao, peso, produto_id, fk_categ_id)  VALUES ('Sombra', 'Produto cosmético para os cílios', 5, 7, 1);
+INSERT INTO tb_produto (nome, descricao, peso, produto_id, fk_categ_id)  VALUES ('Paleta de contorno', 'Produto cosmético para a pele', 50, 8, 4);
+INSERT INTO tb_produto (nome, descricao, peso, produto_id, fk_categ_id)  VALUES ('Esmalte colorido', 'Produto cosmético para as unhas', 10, 9, 2);
+INSERT INTO tb_produto (nome, descricao, peso, produto_id, fk_categ_id)  VALUES ('Creme hidratante', 'Produto cosmético para a pele', 100, 10, 4);
+INSERT INTO tb_produto (nome, descricao, peso, produto_id, fk_categ_id)  VALUES ('Protetor solar', 'Produto de tratamento para o rosto', 75, 11, 1);
 
 INSERT INTO tb_cidade VALUES (1,	'Acrelandia	'	,	1	);
 INSERT INTO tb_cidade VALUES (	2	,	'	Assis Brasil	'	,	1	);

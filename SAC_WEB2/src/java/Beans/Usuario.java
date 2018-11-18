@@ -7,7 +7,7 @@ public class Usuario implements Serializable {
     private int idUsuario;
     private String nomeUsuario;
     private String cpfUsuario;
-    private String emailUsurio;
+    private String emailUsuario;
     private String ruaUsuario;
     private int nrUsuario;
     private String bairroUsuario;
