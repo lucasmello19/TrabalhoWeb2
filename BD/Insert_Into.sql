@@ -391,3 +391,14 @@ INSERT INTO tb_cidade VALUES (	339	,	'	Aparecida do Rio Negro	'	,	27	);
 INSERT INTO tb_cidade VALUES (	340	,	'	Apinaje	'	,	27	);
 INSERT INTO tb_cidade VALUES (	341	,	'	Aragacui	'	,	27	);
 INSERT INTO tb_cidade VALUES (	342	,	'	Aragominas	'	,	27	);
+
+INSERT INTO `mydb`.`tb_perfil` (`perfil_id`, `descricao`) VALUES ('1', 'a');
+INSERT INTO `mydb`.`tb_perfil` (`perfil_id`, `descricao`) VALUES ('2', 'b');
+INSERT INTO `mydb`.`tb_perfil` (`perfil_id`, `descricao`) VALUES ('0', 'c');
+INSERT INTO `mydb`.`tb_perfil` (`perfil_id`, `descricao`) VALUES ('3', 'r');
+
+
+INSERT INTO `mydb`.`tb_login` (`login_id`, `senha`, `email`) VALUES ('0', 'senhateste', 'teste@test.com');
+
+INSERT INTO `mydb`.`tb_usuario` (`user_id`, `nome_completo`, `cpf`, `email`, `rua`, `numero`, `bairro`, `cep`, `complemento`, `telefone`, `senha`, `fk_perfil_id`, `fk_login_id`, `fk_cidade_id`, `fk_estado_id`) VALUES ('0', 'Lucas mello', '726459724', 'lucas@email.com', 'rua iapo', '678', 'rebouças', '284524', 'fundos', '73592835', 'ifwhf', '0', '0', '1', '1');
+

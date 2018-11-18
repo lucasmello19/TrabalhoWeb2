@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Atendimento {
     
-    private Atendimento idAtendimento;
+    private Integer idAtendimento;
     private Timestamp dtHoraInicioAtendimento;
     private Timestamp dtHoraFimAtendimento;
     private TipoAtendimento idTipoAtendimento;
@@ -20,7 +20,7 @@ public class Atendimento {
     public Atendimento() {
     }
 
-    public Atendimento(Atendimento idAtendimento, Timestamp dtHoraInicioAtendimento, Timestamp dtHoraFimAtendimento, TipoAtendimento idTipoAtendimento, Usuario idUsuAtendimento, Perfil idPerfilUsuAtendimento, Login idLoginUsuAtendimento, Produto idProdAtendimento, Categoria idCategoriaAtendimento, String situacaoAtendimento, String descAtendimento, String solucaoAtendimento) {
+    public Atendimento(Integer idAtendimento, Timestamp dtHoraInicioAtendimento, Timestamp dtHoraFimAtendimento, TipoAtendimento idTipoAtendimento, Usuario idUsuAtendimento, Perfil idPerfilUsuAtendimento, Login idLoginUsuAtendimento, Produto idProdAtendimento, Categoria idCategoriaAtendimento, String situacaoAtendimento, String descAtendimento, String solucaoAtendimento) {
         this.idAtendimento = idAtendimento;
         this.dtHoraInicioAtendimento = dtHoraInicioAtendimento;
         this.dtHoraFimAtendimento = dtHoraFimAtendimento;
@@ -35,11 +35,11 @@ public class Atendimento {
         this.solucaoAtendimento = solucaoAtendimento;
     }
 
-    public Atendimento getIdAtendimento() {
+    public Integer getIdAtendimento() {
         return idAtendimento;
     }
 
-    public void setIdAtendimento(Atendimento idAtendimento) {
+    public void setIdAtendimento(Integer idAtendimento) {
         this.idAtendimento = idAtendimento;
     }
 
