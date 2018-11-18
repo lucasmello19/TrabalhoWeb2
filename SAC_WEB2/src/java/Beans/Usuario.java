@@ -19,7 +19,6 @@ public class Usuario implements Serializable {
     private Login loginIdUsuario;
     private Cidade idCidadeUsuario;
     private Estado idEstadoUsuario;
-    private String emailUsuario;
 
     public Usuario() {
     }

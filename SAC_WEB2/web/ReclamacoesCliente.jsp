@@ -4,6 +4,9 @@
     Author     : LucasMello
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Date"%>
+<%@page import="javax.swing.text.DateFormatter"%>
 <%@page import="Beans.Atendimento"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -188,11 +191,14 @@
                 </div>
                 <table class="table table-striped table-hover">
                     <thead>
+                        
                         <tr>
-                            <th>Titulo</th>
                             <th>Descrição</th>
                             <th>Tipo</th>
-                            <th>Status</th>
+                            <th>Produto</th>
+                            <th>Situação</th>
+                            <th>Solução</th>
+                            <th>Data/Hora</th>
                             <th>Editar/Deletar</th>
                         </tr>
                     </thead>
@@ -207,8 +213,16 @@
                                     Atendimento a = list.get(i);
 
                                     out.println("<tr>");
-                                    out.println("<td>" + a.getSituacaoAtendimento() + "</td>");
-                                    out.println("<td>" + a.getSolucaoAtendimento() + "</td>");
+                                    out.println("<td>" + a.getDescAtendimento() + "</td>");
+//                                    out.println("<td>" + a.getIdTipoAtendimento().getNomeAtendimento() + "</td>");
+//                                    out.println("<td>" + a.getIdProdAtendimento().getNomeProduto() + "</td>");
+//                                    out.println("<td>" + a.getSituacaoAtendimento()+ "</td>");
+//                                    out.println("<td>" + a.getSolucaoAtendimento() + "</td>");
+//                                    
+//                                    Date date = new Date(a.getDtHoraInicioAtendimento().getTime());
+//                                    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy'/'HH:mm");
+//
+//                                    out.println("<td>" + format.format(date) + "</td>");
                                     out.println("<td>Defeito</td>");
                                     out.println("<td>Em aberto</td>");
                                     out.println("<td>");
@@ -279,12 +293,12 @@
 
                                 out.println("<div class='modal-body'>");
                                 out.println("<div class='form-group'>");
-                                out.println("<label>" + "Titulo" + "</label>");
+                                out.println("<label>Titulo</label>");
                                 out.println("<input type='text' class='form-control' required>");
                                 out.println("</div>");
                                 out.println("<div class='form-group>");
-                                out.println("    <label>Descrição</label>");
-                                out.println("   <input type=email' class='form-control required>");
+                                out.println("<label>Descrição</label>");
+                                out.println("<input type=email' class='form-control required>");
                                 out.println("</div>");
                                 out.println("<div class='input-group'>");
                                 out.println("<label>Tipo</label>");
