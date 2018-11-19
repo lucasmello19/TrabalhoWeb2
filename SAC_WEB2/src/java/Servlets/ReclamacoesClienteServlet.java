@@ -45,42 +45,40 @@ public class ReclamacoesClienteServlet extends HttpServlet {
             HttpSession session = request.getSession();
             String nome = (String) session.getAttribute("nome");
 
-//            //if (nome != null) {
-//            String categ = request.getParameter("categoria");
-//
-//            //if (categ != null) {
-//            List<Atendimento> list = new ArrayList<>();
-//
-//            Atendimento a = new Atendimento();
-//            a.setDescAtendimento("desc 1");
-//            a.setSituacaoAtendimento("resolviso");
-//            a.setSolucaoAtendimento("solucao 1");
-//
-//
-//            list.add(a);
-//
-//            Atendimento b = new Atendimento();
-//            b.setDescAtendimento("desc 2");
-//            b.setSituacaoAtendimento("resolviso");
-//            b.setSolucaoAtendimento("solucao 2");
-//
-//            list.add(b);
-//
-//            Atendimento c = new Atendimento();
-//            c.setDescAtendimento("desc 3");
-//            c.setSituacaoAtendimento("resolviso");
-//            c.setSolucaoAtendimento("solucao 3");
-//
-//            list.add(c);
-            AtendimentoDao dao = new AtendimentoDao();
-            List<Atendimento> list = dao.findAll();
+            //if (nome != null) {
+            String categ = request.getParameter("categoria");
+
+            List<Atendimento> list = new ArrayList<>();
+
+            Atendimento a = new Atendimento();
+            a.setDescAtendimento("desc 1");
+            a.setSituacaoAtendimento("resolviso");
+            a.setSolucaoAtendimento("solucao 1");
+
+
+            list.add(a);
+
+            Atendimento b = new Atendimento();
+            b.setDescAtendimento("desc 2");
+            b.setSituacaoAtendimento("resolviso");
+            b.setSolucaoAtendimento("solucao 2");
+
+            list.add(b);
+
+            Atendimento c = new Atendimento();
+            c.setDescAtendimento("desc 3");
+            c.setSituacaoAtendimento("resolviso");
+            c.setSolucaoAtendimento("solucao 3");
+
+            list.add(c);
+//            AtendimentoDao dao = new AtendimentoDao();
+//            List<Atendimento> list = dao.findAll();
 
             RequestDispatcher rd = request.getRequestDispatcher("ReclamacoesCliente.jsp");
             request.setAttribute("list", list);
             //request.setAttribute("categoria", categ);
             rd.forward(request, response);
 
-            //}
             //}
 //            RequestDispatcher rd = request.getRequestDispatcher("LoginServlet");
 //            rd.forward(request, response);
