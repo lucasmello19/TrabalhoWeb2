@@ -31,13 +31,13 @@ public class AtendimentoDao {
             //dataHora_inicio, fk_tipoAtend_id, fk_user_id, fk_perfil_id, fk_login_id, situacao, fk_produto_id, fk_categ_id, descricao, solucao, dataHora_fim
            
               pstm.setTimestamp(1, atendimento.getDtHoraInicioAtendimento());
-              pstm.setInt(2, atendimento.getIdTipoAtendimento());
-              pstm.setInt(3, atendimento.getIdUsuAtendimento());
-              pstm.setInt(4, atendimento.getIdPerfilUsuAtendimento());
-              pstm.setInt(5, atendimento.getIdLoginUsuAtendimento());
+              pstm.setInt(2, atendimento.getIdTipoAtendimento().getIdTipoAtendimento());
+              pstm.setInt(3, atendimento.getIdUsuAtendimento().getIdUsuario());
+              pstm.setInt(4, atendimento.getIdPerfilUsuAtendimento().getIdPerfil());
+              pstm.setInt(5, atendimento.getIdLoginUsuAtendimento().getIdLogin());
               pstm.setString(6, atendimento.getSituacaoAtendimento());
-              pstm.setInt(7, atendimento.getIdProdAtendimento());
-              pstm.setInt(8, atendimento.getIdCategoriaAtendimento());
+              pstm.setInt(7, atendimento.getIdProdAtendimento().getIdProduto());
+              pstm.setInt(8, atendimento.getIdCategoriaAtendimento().getIdCategoria());
               pstm.setString(9, atendimento.getDescAtendimento());
               pstm.setString(10, atendimento.getSolucaoAtendimento());
               pstm.setTimestamp(11, atendimento.getDtHoraFimAtendimento());
@@ -69,13 +69,13 @@ public class AtendimentoDao {
         try {
             pstm = conn.prepareStatement(SQL_UPDATE);
             
-              pstm.setInt(2, atendimento.getIdTipoAtendimento());
-              pstm.setInt(3, atendimento.getIdUsuAtendimento());
-              pstm.setInt(4, atendimento.getIdPerfilUsuAtendimento());
-              pstm.setInt(5, atendimento.getIdLoginUsuAtendimento());
+              pstm.setInt(2, atendimento.getIdTipoAtendimento().getIdTipoAtendimento());
+              pstm.setInt(3, atendimento.getIdUsuAtendimento().getIdUsuario());
+              pstm.setInt(4, atendimento.getIdPerfilUsuAtendimento().getIdPerfil());
+              pstm.setInt(5, atendimento.getIdLoginUsuAtendimento().getIdLogin());
               pstm.setString(6, atendimento.getSituacaoAtendimento());
-              pstm.setInt(7, atendimento.getIdProdAtendimento());
-              pstm.setInt(8, atendimento.getIdCategoriaAtendimento());
+              pstm.setInt(7, atendimento.getIdProdAtendimento().getIdProduto());
+              pstm.setInt(8, atendimento.getIdCategoriaAtendimento().getIdCategoria());
               pstm.setString(9, atendimento.getDescAtendimento());
               pstm.setString(10, atendimento.getSolucaoAtendimento());
               
