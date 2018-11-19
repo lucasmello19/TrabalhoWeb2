@@ -173,7 +173,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input  name="confSenha" placeholder="Confirmação de Senha" class="form-control"  type="text" required>
+                                <input  name="confSenha" placeholder="Confirmação de Senha" class="form-control"  type="password" required>
                             </div>
                         </div>
                     </div>

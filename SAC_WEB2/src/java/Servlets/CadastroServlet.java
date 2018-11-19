@@ -5,6 +5,7 @@
  */
 package Servlets;
 
+import DataAccessObject.UsuarioDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,12 +35,36 @@ public class CadastroServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String nome = request.getParameter("nome");
-            String login = request.getParameter("cpf");
+            String cpf = request.getParameter("cpf");
             String email = request.getParameter("email");
             String fone = request.getParameter("telefone");
             String end = request.getParameter("endereco");
             //request.setAttibute("listaIDAluno", estados);
             String senha = request.getParameter("senha");
+            String confsenha = request.getParameter("confSenha");
+            
+            UsuarioDao nomeDao = new UsuarioDao();
+            Boolean retorno = nomeDao.save(nome, cpf, email, end, 409, "jardim botanico", "80210330", "casa 1", fone, senha, 1, 1, 1);
+            
+            if (retorno == true){
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet PortalServlet</title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<div class=\"alert alert-success\" role=\"alert\">");
+                out.println("This is a success alert—check it out!");
+                out.println("</div>");
+                out.println("</body>");
+                out.println("</html>");
+                response.sendRedirect("index.jsp");
+
+            }
+            else{
+                response.sendRedirect("erro.jsp");
+            }
+               
         }
     }
 
