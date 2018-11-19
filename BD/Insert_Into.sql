@@ -1,4 +1,4 @@
-INSERT INTO tb_tipo_atendimento (nome) VALUES ('Reclamação');
+﻿INSERT INTO tb_tipo_atendimento (nome) VALUES ('Reclamação');
 INSERT INTO tb_tipo_atendimento (nome) VALUES ('Sugestão');
 INSERT INTO tb_tipo_atendimento (nome) VALUES ('Crítica');
 INSERT INTO tb_tipo_atendimento (nome) VALUES ('Problema');
@@ -391,3 +391,9 @@ INSERT INTO tb_cidade VALUES (	339	,	'	Aparecida do Rio Negro	'	,	27	);
 INSERT INTO tb_cidade VALUES (	340	,	'	Apinaje	'	,	27	);
 INSERT INTO tb_cidade VALUES (	341	,	'	Aragacui	'	,	27	);
 INSERT INTO tb_cidade VALUES (	342	,	'	Aragominas	'	,	27	);
+
+INSERT INTO tb_perfil VALUES (1, 'C' ); -- Cliente
+
+INSERT INTO tb_perfil VALUES (2, 'F' ); -- Funcionario
+
+INSERT INTO tb_perfil VALUES (3, 'G' ); -- Gerente

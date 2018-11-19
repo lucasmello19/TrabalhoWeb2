@@ -49,7 +49,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input  name="nome" placeholder="Nome" class="form-control"  type="text">
+                                <input  name="nome" placeholder="Nome" class="form-control"  type="text" required>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input name="cpf" placeholder="XXX.XXX.XXX-XX" class="form-control"  type="text">
+                                <input name="cpf" placeholder="XXX.XXX.XXX-XX" class="form-control"  type="text" required>
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input name="email" placeholder="E-Mail" class="form-control"  type="text">
+                                <input name="email" placeholder="E-Mail" class="form-control"  type="text" required>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                <input name="telefone" placeholder="(XX)XXX-XXXX" class="form-control" type="text">
+                                <input name="telefone" placeholder="(XX)XXX-XXXX" class="form-control" type="text" required>
                             </div>
                         </div>
                     </div>
@@ -147,6 +147,30 @@
                                 <label>
                                     <input type="radio" name="genero" value="feminino" /> Feminino
                                 </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Senha -->
+                    
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Senha</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input  name="senha" placeholder="Senha" class="form-control"  type="password" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Confirmação de Senha -->
+                    
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Confirmação de Senha</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input  name="confSenha" placeholder="Confirmação de Senha" class="form-control"  type="text" required>
                             </div>
                         </div>
                     </div>
