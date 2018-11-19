@@ -218,8 +218,8 @@
                         <%
                             for (int i = 0; i < 3; i++) {
                                 out.println("<tr>");
-                                out.println("<td>Calça</td>");
-                                out.println("<td>Jeans</td>");
+                                out.println("<td>Shampoo</td>");
+                                out.println("<td>Anticaspa</td>");
                                 out.println("<td>");
                                 out.println("<a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>");
                                 out.println("<a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>");
@@ -246,7 +246,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Descrição</label>
-                                <input type="email" class="form-control" required>
+                                <input type="text" class="form-control" required>
                             </div>
                         </div>
                         <div class="modal-footer">

@@ -5,28 +5,21 @@
  */
 package Servlets;
 
-import Beans.Atendimento;
-import Beans.Usuario;
-import DataAccessObject.AtendimentoDao;
 import DataAccessObject.UsuarioDao;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author LucasMello
+ * @author Michael
  */
-@WebServlet(name = "ReclamacoesClienteServlet", urlPatterns = {"/ReclamacoesClienteServlet"})
-public class ReclamacoesClienteServlet extends HttpServlet {
+@WebServlet(name = "CadastroServlet", urlPatterns = {"/CadastroServlet"})
+public class CadastroServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,50 +34,37 @@ public class ReclamacoesClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession();
-            String nome = (String) session.getAttribute("nome");
+            String nome = request.getParameter("nome");
+            String cpf = request.getParameter("cpf");
+            String email = request.getParameter("email");
+            String fone = request.getParameter("telefone");
+            String end = request.getParameter("endereco");
+            //request.setAttibute("listaIDAluno", estados);
+            String senha = request.getParameter("senha");
+            String confsenha = request.getParameter("confSenha");
+            
+            UsuarioDao nomeDao = new UsuarioDao();
+            Boolean retorno = nomeDao.save(nome, cpf, email, end, 409, "jardim botanico", "80210330", "casa 1", fone, senha, 1, 1, 1);
+            
+            if (retorno == true){
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet PortalServlet</title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<div class=\"alert alert-success\" role=\"alert\">");
+                out.println("This is a success alert—check it out!");
+                out.println("</div>");
+                out.println("</body>");
+                out.println("</html>");
+                response.sendRedirect("index.jsp");
 
-            //if (nome != null) {
-            String categ = request.getParameter("categoria");
-
-            List<Atendimento> list = new ArrayList<>();
-
-            Atendimento a = new Atendimento();
-            a.setDescAtendimento("desc 1");
-            a.setSituacaoAtendimento("resolviso");
-            a.setSolucaoAtendimento("solucao 1");
-
-
-            list.add(a);
-
-            Atendimento b = new Atendimento();
-            b.setDescAtendimento("desc 2");
-            b.setSituacaoAtendimento("resolviso");
-            b.setSolucaoAtendimento("solucao 2");
-
-            list.add(b);
-
-            Atendimento c = new Atendimento();
-            c.setDescAtendimento("desc 3");
-            c.setSituacaoAtendimento("resolviso");
-            c.setSolucaoAtendimento("solucao 3");
-
-            list.add(c);
-//            AtendimentoDao dao = new AtendimentoDao();
-//            List<Atendimento> list = dao.findAll();
-
-            RequestDispatcher rd = request.getRequestDispatcher("ReclamacoesCliente.jsp");
-            request.setAttribute("list", list);
-            request.setAttribute("index", request.getParameter("index"));
-            request.setAttribute("acao", request.getParameter("acao"));
-
-            //request.setAttribute("categoria", categ);
-            rd.forward(request, response);
-
-            //}
-//            RequestDispatcher rd = request.getRequestDispatcher("LoginServlet");
-//            rd.forward(request, response);
+            }
+            else{
+                response.sendRedirect("erro.jsp");
+            }
+               
         }
     }
 

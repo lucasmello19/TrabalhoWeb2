@@ -52,11 +52,11 @@
                     <!-- Text Nome-->
 
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Nome</label>  
+                        <label class="col-md-4 control-label">Nome completo</label>  
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input  name="nome" placeholder="Nome" class="form-control"  type="text">
+                                <input  name="nome" placeholder="Nome" class="form-control"  type="text" disabled>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input name="email" placeholder="E-Mail" class="form-control"  type="text" disabled>
+                                <input name="email" placeholder="E-Mail" class="form-control"  type="text">
                             </div>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                         <div class="col-md-4 selectContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                <select name="estado" class="form-control selectpicker" >
+                                <select name="cidade" class="form-control selectpicker" >
                                     <option value=" " >Selecione sua cidade</option>
                                     <option>Curitiba</option>
                                     <option>Londrina</option>
@@ -141,19 +141,12 @@
                         </div>
                     </div>
 
-                    <!-- radio genero -->
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Gênero</label>
-                        <div class="col-md-4">
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="genero" value="masculino" /> Masculino
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    <input type="radio" name="genero" value="feminino" /> Feminino
-                                </label>
+                        <label class="col-md-4 control-label">Senha</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input name="senha" placeholder="Senha" class="form-control" type="text">
                             </div>
                         </div>
                     </div>
@@ -163,7 +156,7 @@
                         <label class="col-md-4 control-label"></label>
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-warning" >Editar</button>
-                            <button type="submit" class="btn btn-primary" >Voltar</button>
+                            <button type="submit" class="btn btn-primary" formaction="ReclamacoesCliente.jsp">Voltar</button>
                         </div>
                     </div>
                 </fieldset>

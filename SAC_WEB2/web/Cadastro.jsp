@@ -4,6 +4,7 @@
     Author     : Michael
 --%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -37,7 +38,7 @@
 
         <div class="container">
 
-            <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+            <form class="well form-horizontal" action="CadastroServlet" method="post"  id="contact_form">
                 <fieldset>
 
                     <legend>Cadastro</legend>
@@ -49,7 +50,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input  name="nome" placeholder="Nome" class="form-control"  type="text">
+                                <input  name="nome" placeholder="Nome" class="form-control"  type="text" required>
                             </div>
                         </div>
                     </div>
@@ -61,7 +62,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input name="cpf" placeholder="XXX.XXX.XXX-XX" class="form-control"  type="text">
+                                <input name="cpf" placeholder="XXX.XXX.XXX-XX" class="form-control"  type="text" required>
                             </div>
                         </div>
                     </div>
@@ -72,7 +73,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input name="email" placeholder="E-Mail" class="form-control"  type="text">
+                                <input name="email" placeholder="E-Mail" class="form-control"  type="text" required>
                             </div>
                         </div>
                     </div>
@@ -85,7 +86,7 @@
                         <div class="col-md-4 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                <input name="telefone" placeholder="(XX)XXX-XXXX" class="form-control" type="text">
+                                <input name="telefone" placeholder="(XX)XXX-XXXX" class="form-control" type="text" required>
                             </div>
                         </div>
                     </div>
@@ -101,6 +102,23 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Select Estado -->
+
+                    <div class="form-group"> 
+                        <label class="col-md-4 control-label">Estado</label>
+                        <div class="col-md-4 selectContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                <select name="estado" class="form-control selectpicker" >
+                                    <option value=" " >Selecione seu estado</option>
+                                    <c:forEach var="estados" items="${estados}">
+                                        <option value="${estados.id}">${estados.nome}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Text Cidade-->
 
@@ -111,28 +129,13 @@
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                 <select name="estado" class="form-control selectpicker" >
                                     <option value=" " >Selecione sua cidade</option>
-                                    <option>Curitiba</option>
-                                    <option>Londrina</option>
+                                    <c:forEach var="estados" items="${estados}">
+                                        <option value="${estados.nome}">${estados.nome}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Select Estado -->
-
-                    <div class="form-group"> 
-                        <label class="col-md-4 control-label">Estado</label>
-                        <div class="col-md-4 selectContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                <select name="estado" class="form-control selectpicker" >
-                                    <option value=" " >Selecione seu estado</option>
-                                    <option>Paraná</option>
-                                    <option>São Paulo</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    </div> 
 
                     <!-- radio genero -->
                     <div class="form-group">
@@ -150,13 +153,37 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Senha -->
+                    
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Senha</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input  name="senha" placeholder="Senha" class="form-control"  type="password" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Confirmação de Senha -->
+                    
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Confirmação de Senha</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input  name="confSenha" placeholder="Confirmação de Senha" class="form-control"  type="password" required>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Buttons -->
                     <div class="form-group">
                         <label class="col-md-4 control-label"></label>
                         <div class="col-md-4">
-                            <button type="submit" class="btn btn-success" >Enviar</button>
-                            <button type="submit" class="btn btn-primary" >Voltar</button>
+                            <button type="submit" class="btn btn-success" value="submit">Enviar</button>
+                            <button type="button" class="btn btn-primary" >Voltar</button>
                         </div>
                     </div>
                 </fieldset>

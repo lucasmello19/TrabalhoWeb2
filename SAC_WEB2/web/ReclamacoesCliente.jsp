@@ -4,6 +4,9 @@
     Author     : LucasMello
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Date"%>
+<%@page import="javax.swing.text.DateFormatter"%>
 <%@page import="Beans.Atendimento"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -182,22 +185,24 @@
                             <h2>Reclamações</h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Adicionar nova reclamação</span></a>
+                            <a href=""  onclick='openModalAdd()' class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Adicionar nova reclamação</span></a>
                         </div>
                     </div>
                 </div>
                 <table class="table table-striped table-hover">
                     <thead>
+                        
                         <tr>
-                            <th>Titulo</th>
                             <th>Descrição</th>
                             <th>Tipo</th>
-                            <th>Status</th>
+                            <th>Produto</th>
+                            <th>Situação</th>
+                            <th>Solução</th>
+                            <th>Data/Hora</th>
                             <th>Editar/Deletar</th>
                         </tr>
                     </thead>
                     <tbody>
-
                         <%
 
                             List<Atendimento> list = (List<Atendimento>) request.getAttribute("list");
@@ -208,13 +213,19 @@
                                     Atendimento a = list.get(i);
 
                                     out.println("<tr>");
-                                    out.println("<td>" + a.getSituacaoAtendimento() + "</td>");
-                                    out.println("<td>" + a.getSolucaoAtendimento() + "</td>");
-                                    out.println("<td>Defeito</td>");
-                                    out.println("<td>Em aberto</td>");
+                                    out.println("<td>" + a.getDescAtendimento() + "</td>");
+//                                    out.println("<td>" + a.getIdTipoAtendimento().getNomeAtendimento() + "</td>");
+//                                    out.println("<td>" + a.getIdProdAtendimento().getNomeProduto() + "</td>");
+//                                    out.println("<td>" + a.getSituacaoAtendimento()+ "</td>");
+//                                    out.println("<td>" + a.getSolucaoAtendimento() + "</td>");
+//                                    
+//                                    Date date = new Date(a.getDtHoraInicioAtendimento().getTime());
+//                                    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy'/'HH:mm");
+//
+//                                    out.println("<td>" + format.format(date) + "</td>");
                                     out.println("<td>");
-                                    out.println("<a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>");
-                                    out.println("<a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>");
+                                    out.println("<a href='' onclick='openModalEdit("+i+")' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>");  
+                                    out.println("<a href='' onclick='openModalDelet("+i+")' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>");
                                     out.println("</td>");
                                     out.println("</tr>");
 
@@ -261,6 +272,9 @@
                 </div>
             </div>
         </div>
+
+
+
         <!-- Edit Modal HTML -->
         <div id="editEmployeeModal" class="modal fade">
             <div class="modal-dialog">
@@ -270,33 +284,84 @@
                             <h4 class="modal-title">Editar Reclamação</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
-                        <div class="modal-body">					
-                            <div class="form-group">
-                                <label>Titulo</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Descrição</label>
-                                <input type="email" class="form-control" required>
-                            </div>
-                            <div class="input-group">
-                                <label>Tipo</label>
-                                <select name="tipo" class="form-control selectpicker" >
-                                    <option value=" " >Selecione o tipo da reclamação</option>
-                                    <option>Defeito</option>
-                                    <option>Atraso</option>
-                                </select>
-                            </div>
-                        </div>
+
+                        <%                               
+                            if (request.getAttribute("index") != null) {
+                                String i = (String) request.getAttribute("index");
+//                                
+                                if (!i.equals("")) {
+
+                                    Atendimento a = list.get(Integer.parseInt(i));
+
+                                    out.println("<div class='modal-body'>");
+                                    out.println("<div class='form-group'>");
+                                    out.println("<label>Titulo</label>");
+                                    out.println("<input type='text' value ='" + a.getDescAtendimento() + "' class='form-control' required>");
+                                    out.println("</div>");
+                                    out.println("<div class='form-group'>");
+                                    out.println("<label>Descrição</label>");
+                                    out.println("<input type='text' class='form-control' required>");
+                                    out.println("</div>");
+                                    out.println("<div class='input-group'>");
+                                    out.println("<label>Tipo</label>");
+                                    out.println("<select name='tipo' class='form-control selectpicker' >");
+                                    out.println("<option value=' ' >Selecione o tipo da reclamação</option>");
+                                    out.println("<option>Defeito</option>");
+                                    out.println("<option>Atraso</option>");
+                                    out.println("</select>");
+                                    out.println("</div>");
+                                    out.println("</div>");
+                                }
+                            }
+
+
+                        %>
+
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-warning" value="Editar">
                         </div>
                     </form>
+                    <script>
+                        
+                function openModalEdit(index){
+                    window.location.href="/SAC_WEB2/ReclamacoesClienteServlet?index="+index+"&acao=edit";
+                } 
+                function openModalDelet(index){
+                    window.location.href="/SAC_WEB2/ReclamacoesClienteServlet?index="+index+"&acao=delet";
+                } 
+                function openModalAdd(){
+                    window.location.href="/SAC_WEB2/ReclamacoesClienteServlet?acao=add";
+                }
+                $(document).ready(function() {
+                    var urlParams = new URLSearchParams(window.location.search);
+                    
+                    var index = urlParams.get('index');
+                    var acao = urlParams.get('acao');
+
+                    if (index !== null){
+                        
+                        if (acao !== null){
+                            if(acao == "edit"){
+                                $('#editEmployeeModal').modal('show');
+
+                            }else if(acao == "delet"){
+                                $('#deleteEmployeeModal').modal('show');
+                            }
+                        }
+                    }else{
+                        if(acao == "add"){
+                            $('#addEmployeeModal').modal('show');
+                        }
+                    }
+                });
+
+                    </script>
                 </div>
             </div>
         </div>
         <!-- Delete Modal HTML -->
+
         <div id="deleteEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -318,3 +383,5 @@
         </div>
     </body>
 </html>       
+
+
