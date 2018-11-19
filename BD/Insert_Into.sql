@@ -393,7 +393,10 @@ INSERT INTO tb_cidade VALUES (	341	,	'	Aragacui	'	,	27	);
 INSERT INTO tb_cidade VALUES (	342	,	'	Aragominas	'	,	27	);
 
 INSERT INTO tb_perfil VALUES (1, 'C' ); -- Cliente
-
 INSERT INTO tb_perfil VALUES (2, 'F' ); -- Funcionario
-
 INSERT INTO tb_perfil VALUES (3, 'G' ); -- Gerente
+
+INSERT INTO `mydb`.`tb_login` (`login_id`, `senha`, `email`) VALUES ('0', 'senhateste', 'teste@test.com');
+
+INSERT INTO `mydb`.`tb_usuario` (`user_id`, `nome_completo`, `cpf`, `email`, `rua`, `numero`, `bairro`, `cep`, `complemento`, `telefone`, `senha`, `fk_perfil_id`, `fk_login_id`, `fk_cidade_id`, `fk_estado_id`) VALUES ('0', 'Lucas mello', '726459724', 'lucas@email.com', 'rua iapo', '678', 'rebouças', '284524', 'fundos', '73592835', 'ifwhf', '1', '0', '1', '1');
+

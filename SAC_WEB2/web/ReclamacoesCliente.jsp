@@ -4,6 +4,11 @@
     Author     : LucasMello
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Date"%>
+<%@page import="javax.swing.text.DateFormatter"%>
+<%@page import="Beans.Atendimento"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -158,7 +163,7 @@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="LogoutServlet">Logout</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="AlteracaoDeDadosCliente.jsp">Conta</a></li>
@@ -186,43 +191,48 @@
                 </div>
                 <table class="table table-striped table-hover">
                     <thead>
+                        
                         <tr>
-                            <th>Titulo</th>
                             <th>Descrição</th>
                             <th>Tipo</th>
-                            <th>Status</th>
+                            <th>Produto</th>
+                            <th>Situação</th>
+                            <th>Solução</th>
+                            <th>Data/Hora</th>
                             <th>Editar/Deletar</th>
                         </tr>
                     </thead>
                     <tbody>
-                        
                         <%
-                            for (int i = 0; i < 10; i++) {
-                                out.println("<tr>");
-                                out.println("<td>Produto estragado</td>");
-                                out.println("<td>O produto chegou estragado em minha casa</td>");
-                                   out.println("<td>Defeito</td>");
-                                out.println("<td>Em aberto</td>");
-                                out.println("<td>");
-                                out.println("<a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>");
-                                out.println("<a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>");
-                                out.println("</td>");
-                                out.println("</tr>");
-                                    
-                                
-                            }%>
-                        
-                        <tr>
 
-                            <td>Produto estragado</td>
-                            <td>O produto chegou estragado em minha casa</td>
-                            <td>Defeito</td>
-                            <td>Em aberto</td>
-                            <td>
-                                <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                            </td>
-                        </tr>
+                            List<Atendimento> list = (List<Atendimento>) request.getAttribute("list");
+
+                            if (list != null) {
+                                for (int i = 0; i < list.size(); i++) {
+
+                                    Atendimento a = list.get(i);
+
+                                    out.println("<tr>");
+                                    out.println("<td>" + a.getDescAtendimento() + "</td>");
+//                                    out.println("<td>" + a.getIdTipoAtendimento().getNomeAtendimento() + "</td>");
+//                                    out.println("<td>" + a.getIdProdAtendimento().getNomeProduto() + "</td>");
+//                                    out.println("<td>" + a.getSituacaoAtendimento()+ "</td>");
+//                                    out.println("<td>" + a.getSolucaoAtendimento() + "</td>");
+//                                    
+//                                    Date date = new Date(a.getDtHoraInicioAtendimento().getTime());
+//                                    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy'/'HH:mm");
+//
+//                                    out.println("<td>" + format.format(date) + "</td>");
+                                    out.println("<td>");
+                                    out.println("<a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>");
+                                    out.println("<a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>");
+                                    out.println("</td>");
+                                    out.println("</tr>");
+
+                                }
+                            }
+
+                        %>
                     </tbody>
                 </table>
             </div>
@@ -262,6 +272,9 @@
                 </div>
             </div>
         </div>
+
+
+
         <!-- Edit Modal HTML -->
         <div id="editEmployeeModal" class="modal fade">
             <div class="modal-dialog">
@@ -271,24 +284,36 @@
                             <h4 class="modal-title">Editar Reclamação</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
-                        <div class="modal-body">					
-                            <div class="form-group">
-                                <label>Titulo</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Descrição</label>
-                                <input type="email" class="form-control" required>
-                            </div>
-                            <div class="input-group">
-                                <label>Tipo</label>
-                                <select name="tipo" class="form-control selectpicker" >
-                                    <option value=" " >Selecione o tipo da reclamação</option>
-                                    <option>Defeito</option>
-                                    <option>Atraso</option>
-                                </select>
-                            </div>
-                        </div>
+
+                        <tbody>
+                            <%                             
+                                Atendimento a = list.get(0);
+
+                                out.println("<div class='modal-body'>");
+                                out.println("<div class='form-group'>");
+                                out.println("<label>Titulo</label>");
+                                out.println("<input type='text' class='form-control' required>");
+                                out.println("</div>");
+                                out.println("<div class='form-group>");
+                                out.println("<label>Descrição</label>");
+                                out.println("<input type=email' class='form-control required>");
+                                out.println("</div>");
+                                out.println("<div class='input-group'>");
+                                out.println("<label>Tipo</label>");
+                                out.println("<select name='tipo' class='form-control selectpicker' >");
+                                out.println("<option value=' oi'>Selecione o tipo da reclamação</option>");
+                                out.println("<option>Defeito</option>");
+                                out.println("<option>Atraso</option>");
+                                out.println("</select>");
+                                out.println("</div>");
+                                out.println("</div");
+
+
+                            %>
+
+                        </tbody>
+
+
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-warning" value="Editar">
@@ -298,6 +323,7 @@
             </div>
         </div>
         <!-- Delete Modal HTML -->
+
         <div id="deleteEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -319,3 +345,5 @@
         </div>
     </body>
 </html>       
+
+
