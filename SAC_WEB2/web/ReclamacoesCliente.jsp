@@ -224,7 +224,7 @@
 //
 //                                    out.println("<td>" + format.format(date) + "</td>");
                                     out.println("<td>");
-                                    out.println("<a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>");
+                                    out.println("<a href='' onclick='openModal("+i+")' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>");  
                                     out.println("<a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>");
                                     out.println("</td>");
                                     out.println("</tr>");
@@ -285,40 +285,57 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
 
-                        <tbody>
-                            <%                             
-                                Atendimento a = list.get(0);
+                            <%                        
+                                String i = (String)request.getAttribute("id");
+//                                
+                                if(!i.equals("")){
+                                    
+                                    Atendimento a = list.get(Integer.parseInt(i));
 
-                                out.println("<div class='modal-body'>");
-                                out.println("<div class='form-group'>");
-                                out.println("<label>Titulo</label>");
-                                out.println("<input type='text' class='form-control' required>");
-                                out.println("</div>");
-                                out.println("<div class='form-group>");
-                                out.println("<label>Descrição</label>");
-                                out.println("<input type=email' class='form-control required>");
-                                out.println("</div>");
-                                out.println("<div class='input-group'>");
-                                out.println("<label>Tipo</label>");
-                                out.println("<select name='tipo' class='form-control selectpicker' >");
-                                out.println("<option value=' oi'>Selecione o tipo da reclamação</option>");
-                                out.println("<option>Defeito</option>");
-                                out.println("<option>Atraso</option>");
-                                out.println("</select>");
-                                out.println("</div>");
-                                out.println("</div");
-
-
+                                    out.println("<div class='modal-body'>");
+                                    out.println("<div class='form-group'>");
+                                    out.println("<label>Titulo</label>");
+                                    out.println("<input type='text' value ='" + a.getDescAtendimento() + "' class='form-control' required>");
+                                    out.println("</div>");
+                                    out.println("<div class='form-group'>");
+                                    out.println("<label>Descrição</label>");
+                                    out.println("<input type='text' class='form-control' required>");
+                                    out.println("</div>");
+                                    out.println("<div class='input-group'>");
+                                    out.println("<label>Tipo</label>");
+                                    out.println("<select name='tipo' class='form-control selectpicker' >");
+                                    out.println("<option value=' ' >Selecione o tipo da reclamação</option>");
+                                    out.println("<option>Defeito</option>");
+                                    out.println("<option>Atraso</option>");
+                                    out.println("</select>");
+                                    out.println("</div>");
+                                    out.println("</div>");
+                                }
+                               
                             %>
-
-                        </tbody>
-
 
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-warning" value="Editar">
                         </div>
                     </form>
+                    <script>
+                        
+                function openModal(id){
+                            
+                    window.location.href="/SAC_WEB2/ReclamacoesClienteServlet?id="+id;
+                    // 
+                    //
+                }     
+                $(document).ready(function() {
+                    var urlParams = new URLSearchParams(window.location.search);
+                    var myParam = urlParams.get('id');
+                            
+                    if (myParam !== null){
+                        $('#editEmployeeModal').modal('show');
+                    }
+                });
+                    </script>
                 </div>
             </div>
         </div>
