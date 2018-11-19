@@ -4,15 +4,15 @@ import java.sql.Timestamp;
 
 public class Atendimento {
     
-    private Integer idAtendimento;
+    private Atendimento idAtendimento;
     private Timestamp dtHoraInicioAtendimento;
     private Timestamp dtHoraFimAtendimento;
-    private Integer idTipoAtendimento;
-    private Integer idUsuAtendimento;
-    private Integer idPerfilUsuAtendimento;
-    private Integer idLoginUsuAtendimento; 
-    private Integer idProdAtendimento;
-    private Integer idCategoriaAtendimento;
+    private TipoAtendimento idTipoAtendimento;
+    private Usuario idUsuAtendimento;
+    private Perfil idPerfilUsuAtendimento;
+    private Login idLoginUsuAtendimento; 
+    private Produto idProdAtendimento;
+    private Categoria idCategoriaAtendimento;
     private String situacaoAtendimento;          
     private String descAtendimento;
     private String solucaoAtendimento;
@@ -20,7 +20,7 @@ public class Atendimento {
     public Atendimento() {
     }
 
-    public Atendimento(Integer idAtendimento, Timestamp dtHoraInicioAtendimento, Timestamp dtHoraFimAtendimento, Integer idTipoAtendimento, Integer idUsuAtendimento, Integer idPerfilUsuAtendimento, Integer idLoginUsuAtendimento, Integer idProdAtendimento, Integer idCategoriaAtendimento, String situacaoAtendimento, String descAtendimento, String solucaoAtendimento) {
+    public Atendimento(Atendimento idAtendimento, Timestamp dtHoraInicioAtendimento, Timestamp dtHoraFimAtendimento, TipoAtendimento idTipoAtendimento, Usuario idUsuAtendimento, Perfil idPerfilUsuAtendimento, Login idLoginUsuAtendimento, Produto idProdAtendimento, Categoria idCategoriaAtendimento, String situacaoAtendimento, String descAtendimento, String solucaoAtendimento) {
         this.idAtendimento = idAtendimento;
         this.dtHoraInicioAtendimento = dtHoraInicioAtendimento;
         this.dtHoraFimAtendimento = dtHoraFimAtendimento;
@@ -35,11 +35,11 @@ public class Atendimento {
         this.solucaoAtendimento = solucaoAtendimento;
     }
 
-    public Integer getIdAtendimento() {
+    public Atendimento getIdAtendimento() {
         return idAtendimento;
     }
 
-    public void setIdAtendimento(Integer idAtendimento) {
+    public void setIdAtendimento(Atendimento idAtendimento) {
         this.idAtendimento = idAtendimento;
     }
 
@@ -59,51 +59,51 @@ public class Atendimento {
         this.dtHoraFimAtendimento = dtHoraFimAtendimento;
     }
 
-    public Integer getIdTipoAtendimento() {
+    public TipoAtendimento getIdTipoAtendimento() {
         return idTipoAtendimento;
     }
 
-    public void setIdTipoAtendimento(Integer idTipoAtendimento) {
+    public void setIdTipoAtendimento(TipoAtendimento idTipoAtendimento) {
         this.idTipoAtendimento = idTipoAtendimento;
     }
 
-    public Integer getIdUsuAtendimento() {
+    public Usuario getIdUsuAtendimento() {
         return idUsuAtendimento;
     }
 
-    public void setIdUsuAtendimento(Integer idUsuAtendimento) {
+    public void setIdUsuAtendimento(Usuario idUsuAtendimento) {
         this.idUsuAtendimento = idUsuAtendimento;
     }
 
-    public Integer getIdPerfilUsuAtendimento() {
+    public Perfil getIdPerfilUsuAtendimento() {
         return idPerfilUsuAtendimento;
     }
 
-    public void setIdPerfilUsuAtendimento(Integer idPerfilUsuAtendimento) {
+    public void setIdPerfilUsuAtendimento(Perfil idPerfilUsuAtendimento) {
         this.idPerfilUsuAtendimento = idPerfilUsuAtendimento;
     }
 
-    public Integer getIdLoginUsuAtendimento() {
+    public Login getIdLoginUsuAtendimento() {
         return idLoginUsuAtendimento;
     }
 
-    public void setIdLoginUsuAtendimento(Integer idLoginUsuAtendimento) {
+    public void setIdLoginUsuAtendimento(Login idLoginUsuAtendimento) {
         this.idLoginUsuAtendimento = idLoginUsuAtendimento;
     }
 
-    public Integer getIdProdAtendimento() {
+    public Produto getIdProdAtendimento() {
         return idProdAtendimento;
     }
 
-    public void setIdProdAtendimento(Integer idProdAtendimento) {
+    public void setIdProdAtendimento(Produto idProdAtendimento) {
         this.idProdAtendimento = idProdAtendimento;
     }
 
-    public Integer getIdCategoriaAtendimento() {
+    public Categoria getIdCategoriaAtendimento() {
         return idCategoriaAtendimento;
     }
 
-    public void setIdCategoriaAtendimento(Integer idCategoriaAtendimento) {
+    public void setIdCategoriaAtendimento(Categoria idCategoriaAtendimento) {
         this.idCategoriaAtendimento = idCategoriaAtendimento;
     }
 
