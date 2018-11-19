@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -46,7 +47,8 @@ public class CadastroServlet extends HttpServlet {
             UsuarioDao nomeDao = new UsuarioDao();
             Boolean retorno = nomeDao.save(nome, cpf, email, end, 409, "jardim botanico", "80210330", "casa 1", fone, senha, 1, 1, 1);
             
-            if (retorno == true){
+            //HttpSession session = request.getSession();
+            if (retorno){
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
@@ -59,12 +61,14 @@ public class CadastroServlet extends HttpServlet {
                 out.println("</body>");
                 out.println("</html>");
                 response.sendRedirect("index.jsp");
-
             }
             else{
                 response.sendRedirect("erro.jsp");
             }
                
+        }
+        catch(Exception e){
+            e.printStackTrace();
         }
     }
 

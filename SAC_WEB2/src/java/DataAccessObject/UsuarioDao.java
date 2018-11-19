@@ -262,6 +262,10 @@ public class UsuarioDao {
 
     }
 
+    public Boolean save(String nome, String cpf, String email, String end, int i, String jardim_botanico, String string, String casa_1, String fone, String senha, int i0, int i1, int i2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
 
     
