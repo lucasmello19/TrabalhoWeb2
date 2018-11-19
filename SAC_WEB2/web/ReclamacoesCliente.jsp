@@ -185,7 +185,7 @@
                             <h2>Reclamações</h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Adicionar nova reclamação</span></a>
+                            <a href=""  onclick='openModalAdd()' class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Adicionar nova reclamação</span></a>
                         </div>
                     </div>
                 </div>
@@ -224,8 +224,8 @@
 //
 //                                    out.println("<td>" + format.format(date) + "</td>");
                                     out.println("<td>");
-                                    out.println("<a href='' onclick='openModal("+i+")' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>");  
-                                    out.println("<a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>");
+                                    out.println("<a href='' onclick='openModalEdit("+i+")' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>");  
+                                    out.println("<a href='' onclick='openModalDelet("+i+")' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>");
                                     out.println("</td>");
                                     out.println("</tr>");
 
@@ -285,11 +285,12 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
 
-                            <%                        
-                                String i = (String)request.getAttribute("id");
+                        <%                               
+                            if (request.getAttribute("index") != null) {
+                                String i = (String) request.getAttribute("index");
 //                                
-                                if(!i.equals("")){
-                                    
+                                if (!i.equals("")) {
+
                                     Atendimento a = list.get(Integer.parseInt(i));
 
                                     out.println("<div class='modal-body'>");
@@ -311,8 +312,10 @@
                                     out.println("</div>");
                                     out.println("</div>");
                                 }
-                               
-                            %>
+                            }
+
+
+                        %>
 
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
@@ -321,20 +324,38 @@
                     </form>
                     <script>
                         
-                function openModal(id){
-                            
-                    window.location.href="/SAC_WEB2/ReclamacoesClienteServlet?id="+id;
-                    // 
-                    //
-                }     
+                function openModalEdit(index){
+                    window.location.href="/SAC_WEB2/ReclamacoesClienteServlet?index="+index+"&acao=edit";
+                } 
+                function openModalDelet(index){
+                    window.location.href="/SAC_WEB2/ReclamacoesClienteServlet?index="+index+"&acao=delet";
+                } 
+                function openModalAdd(){
+                    window.location.href="/SAC_WEB2/ReclamacoesClienteServlet?acao=add";
+                }
                 $(document).ready(function() {
                     var urlParams = new URLSearchParams(window.location.search);
-                    var myParam = urlParams.get('id');
-                            
-                    if (myParam !== null){
-                        $('#editEmployeeModal').modal('show');
+                    
+                    var index = urlParams.get('index');
+                    var acao = urlParams.get('acao');
+
+                    if (index !== null){
+                        
+                        if (acao !== null){
+                            if(acao == "edit"){
+                                $('#editEmployeeModal').modal('show');
+
+                            }else if(acao == "delet"){
+                                $('#deleteEmployeeModal').modal('show');
+                            }
+                        }
+                    }else{
+                        if(acao == "add"){
+                            $('#addEmployeeModal').modal('show');
+                        }
                     }
                 });
+
                     </script>
                 </div>
             </div>

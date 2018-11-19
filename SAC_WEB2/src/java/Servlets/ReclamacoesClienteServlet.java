@@ -76,7 +76,9 @@ public class ReclamacoesClienteServlet extends HttpServlet {
 
             RequestDispatcher rd = request.getRequestDispatcher("ReclamacoesCliente.jsp");
             request.setAttribute("list", list);
-            request.setAttribute("id", request.getParameter("id"));
+            request.setAttribute("index", request.getParameter("index"));
+            request.setAttribute("acao", request.getParameter("acao"));
+
             //request.setAttribute("categoria", categ);
             rd.forward(request, response);
 
