@@ -50,7 +50,7 @@
 
       <div class="col-sm-4 col-sm-offset-4 inputGroupContainer">
           <h4 class="text-center text-danger"> Identifique-se para acessar a plataforma! </h4>
-        <form class="form-group well form-horizontal">            
+        <form class="form-group well form-horizontal" action="LoginServlet" method="POST">            
           <h2 class="text-center">Beibe <br> SAC</h2>
           <hr/>
           <div class="radio">

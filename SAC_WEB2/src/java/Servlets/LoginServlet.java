@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  * @author LucasMello
  */
 @WebServlet(name = "LoginServelet", urlPatterns = {"/LoginServelet"})
-public class LoginServelet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
