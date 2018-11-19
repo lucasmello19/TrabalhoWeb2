@@ -54,18 +54,18 @@
           <h2 class="text-center">Beibe <br> SAC</h2>
           <hr/>
           <div class="radio">
-            <label><input type="radio" name="optradio" id="show" checked>Sou Cliente</label>
+              <label><input type="radio" value="cliente" name="optradio" id="show" checked>Sou Cliente</label>
           </div>
           <div class="radio">
-            <label><input type="radio" name="optradio" id="hider1">Sou Funcionário</label>
+            <label><input type="radio" value="funcionario" name="optradio" id="hider1">Sou Funcionário</label>
           </div>
           <div class="radio">
-            <label><input type="radio" name="optradio" id="hider2">Sou Gerente</label>
+            <label><input type="radio" value="gerente" name="optradio" id="hider2">Sou Gerente</label>
           </div>
           <br>
           <input type="email" name="email" required autofocus class="form-control mx-sm-3" placeholder="E-mail"><br>
 
-          <input type="password" name="password" value="" required  class="form-control mx-sm-3"  placeholder="Senha"><br>
+          <input type="password" name="senha" value="" required  class="form-control mx-sm-3"  placeholder="Senha"><br>
 
           <input type="submit" name="submit" value="Entrar" class="btn btn-primary">
           <a href="Cadastro.jsp" class="pull-right" id="cadastro">Cadastre-se</a>
