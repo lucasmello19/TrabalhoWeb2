@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author LucasMello
  */
-@WebServlet(name = "LoginServelet", urlPatterns = {"/LoginServelet"})
+@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
 
     /**
@@ -35,11 +35,14 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        PrintWriter out = response.getWriter();
+        try {
            
-            String login = request.getParameter("login");
+            String login = request.getParameter("email");
             String senha = request.getParameter("senha");
-
+            String tipo = request.getParameter("optradio");
+            out.println("Olá, " + login + tipo);
+            out.println("<p>Descomente as linhas no 'LoginServlet' pra fazer o logar e redirecionar.</p>");
             UsuarioDao userDao = new UsuarioDao();
 //            Boolean retorno = userDao.carregarPessoas(login, senha);
 //            
@@ -94,6 +97,9 @@ public class LoginServlet extends HttpServlet {
 //            }
             /* TODO output your page here. You may use following sample code. */
             
+        }
+        catch (Exception ex){
+            out.println("Alguma coisa deu errado: " + ex.getMessage());
         }
     }
 
