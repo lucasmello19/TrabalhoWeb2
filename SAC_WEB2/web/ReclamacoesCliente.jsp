@@ -278,7 +278,7 @@
         <div id="editEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form>
+                    <form action="ReclamacoesClienteServlet" method="POST">
                         <div class="modal-header">						
                             <h4 class="modal-title">Editar Reclamação</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -318,7 +318,7 @@
                         %>
 
                         <div class="modal-footer">
-                            <input  type=hidden"  name="acaoForm" class="form-control" value="edit" required>
+                            <input  type="hidden"  name="acaoForm" class="form-control" value="edit" required>
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-warning" value="Editar">
                         </div>
@@ -366,14 +366,22 @@
         <div id="deleteEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form>
+                    <form action="ReclamacoesClienteServlet" method="POST">
                         <div class="modal-header">
                             <h4 class="modal-title">Deletar reclamação</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <input  type="hidden"  name="acaoForm" class="form-control" value="add" required>
-                            <input  type="hidden"  name="index"    class="form-control" value="0" required>
+                            <input  type="hidden"  name="acaoForm" class="form-control" value="delet">
+                            <%
+                                if (request.getAttribute("index") != null) {
+                                        String i = (String) request.getAttribute("index");
+//                                
+                                        if (!i.equals("")) {
+                                            out.println("<input  type='hidden' name='index' class='form-control' value='" + i + "'>");
+                                        }
+                                }
+                            %>
 
                             <p>Tem certeza que deseja deletar esta reclamação?</p>
                         </div>
