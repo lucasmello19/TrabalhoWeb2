@@ -70,6 +70,17 @@
                             out.println("</div>");
                         out.println("</div>");
                     out.println("</div>");
+                    
+                    
+                    out.println("<div class='form-group'>");
+                        out.println("<label class='col-md-4 control-label'>CPF</label>");
+                        out.println("<div class='col-md-4 inputGroupContainer'>");
+                            out.println("<div class='input-group'>");
+                                out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>");
+                                out.println("<input  name='cpf'  value='"+user.getCpfUsuario()+"' class='form-control'  type='text' disabled>");
+                            out.println("</div>");
+                        out.println("</div>");
+                    out.println("</div>");
 
                     //<!-- Text E-mail-->
                             
