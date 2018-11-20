@@ -3,10 +3,10 @@ package Connection;
 import java.sql.*;
 
 public class ConnectionFactory {
-    private static final String URL = "jdbc:mysql://localhost:3306/Web2";
+    private static final String URL = "jdbc:mysql://localhost:3306/mydb";
     private static final String DRIVER_CLASS_MYSQL = "com.mysql.jdbc.Driver";
     private static final String USER = "root";
-    private static final String PASS = "root";
+    private static final String PASS = "";
 
     public static Connection getConnection() {
         System.out.println("Conectando ao Banco de Dados");
