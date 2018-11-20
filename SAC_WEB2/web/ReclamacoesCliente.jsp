@@ -166,7 +166,7 @@
                         <li><a href="LogoutServlet">Logout</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="AlteracaoDeDadosCliente.jsp">Conta</a></li>
+                        <li><a href="AlteracaoDeDadosClienteServlet">Conta</a></li>
                     </ul>
 
                 </div><!-- /.navbar-collapse -->
@@ -241,19 +241,19 @@
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form>
+                    <form action="ReclamacoesClienteServlet" method="POST">
                         <div class="modal-header">						
                             <h4 class="modal-title">Adicionar reclamação</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">					
-                            <div class="form-group">
+                            <div hidden class="form-group">
                                 <label>Titulo</label>
-                                <input type="text" class="form-control" required>
+                                <input name="acaoForm" type="text" class="form-control" value='insert' required>
                             </div>
                             <div class="form-group">
                                 <label>Descrição</label>
-                                <input type="text" class="form-control" required>
+                                <input name = 'descricao' type="text" class="form-control" required>
                             </div>
                             <div class="input-group">
                                 <label>Tipo</label>

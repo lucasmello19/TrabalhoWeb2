@@ -5,6 +5,8 @@
  */
 package Servlets;
 
+import Beans.Usuario;
+import DataAccessObject.UsuarioDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -38,24 +40,27 @@ public class AlteracaoDeDadosClienteServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-            HttpSession session = request.getSession();
-            String nome = (String)session.getAttribute("nome");
+         
+//            HttpSession session = request.getSession();
+//            String nome = (String)session.getAttribute("nome");
+//
+//                UsuarioDao dao = new UsuarioDao();
+//                Usuario user = (Usuario) dao.findByFilter(id)
 
-            String acao = request.getParameter("acao");
-            
-            if("editar".equals(acao) && nome != null){
-                RequestDispatcher rd = request.getRequestDispatcher("AlteracaoDeDadosCliente.jsp");
-                request.setAttribute("acao", "editar");
-                rd.forward(request, response);
-            }else if("criar".equals(acao)){
-                RequestDispatcher rd = request.getRequestDispatcher("AlteracaoDeDadosCliente.jsp");
-                request.setAttribute("acao", "criar");
-                rd.forward(request, response);
-            }else{
-                RequestDispatcher rd = request.getRequestDispatcher("LoginServlet");
-                rd.forward(request, response);
-            }
+            Usuario user = new Usuario();
+            user.setBairroUsuario("Vila piedade");
+            user.setCepUsuario("18210370");
+            user.setComplementoUsuario("fundos");
+            user.setCpfUsuario("9609625843");
+            user.setEmailUsuario("lucas@lucas.com");
+//            user.setIdCidadeUsuario("itapetininga");
+//            user.setIdEstadoUsuario("são paulo");
+//
+//            request.setAttribute("user", user);
+
+            RequestDispatcher rd = request.getRequestDispatcher("AlteracaoDeDadosCliente.jsp");
+            rd.forward(request, response);
+//            }
 
         }
     }
