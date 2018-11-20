@@ -5,30 +5,20 @@
  */
 package Servlets;
 
-import Beans.Cidade;
-import Beans.Estado;
-import Beans.Usuario;
-import DataAccessObject.CidadeDao;
-import DataAccessObject.EstadoDao;
-import DataAccessObject.UsuarioDao;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author LucasMello
  */
-@WebServlet(name = "AlteracaoDeDadosClienteServlet", urlPatterns = {"/AlteracaoDeDadosClienteServlet"})
-public class AlteracaoDeDadosClienteServlet extends HttpServlet {
+@WebServlet(name = "erroServlet", urlPatterns = {"/erroServlet"})
+public class erroServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,41 +34,16 @@ public class AlteracaoDeDadosClienteServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-         
-//            HttpSession session = request.getSession();
-//            String nome = (String)session.getAttribute("nome");
-//
-//                UsuarioDao dao = new UsuarioDao();
-//                Usuario user = (Usuario) dao.findByFilter(id)
-
-            Usuario user = new Usuario();
-            user.setBairroUsuario("Vila piedade");
-            user.setCepUsuario("18210370");
-            user.setComplementoUsuario("fundos");
-            user.setCpfUsuario("9609625843");
-            user.setEmailUsuario("lucas@lucas.com");
-            user.setSenhaLoginUsuario("sivlsjbvskfv");
-            user.setRuaUsuario("americo izzo");
-            user.setTelefoneUsuario("27191900");
-            user.setNomeUsuario("lucas mello");
-
-            List<Cidade> cidades = new ArrayList<Cidade>();
-            CidadeDao daoCidade = new CidadeDao();
-            cidades = daoCidade.findAll();
-            
-            List<Estado> estados = new ArrayList<Estado>();
-            EstadoDao estadoDao = new EstadoDao();
-            estados = estadoDao.findAll();
-            
-            request.setAttribute("user", user);
-            request.setAttribute("cidades", cidades);
-            request.setAttribute("estados", estados);
-
-
-            RequestDispatcher rd = request.getRequestDispatcher("AlteracaoDeDadosCliente.jsp");
-            rd.forward(request, response);
-//            }
-
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet erroServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>"+request.getAttribute("msg")+"</h1>");
+            out.println("<p><a href='index.jsp'>Página Inicial</a></p>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

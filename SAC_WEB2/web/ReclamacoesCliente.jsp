@@ -248,7 +248,6 @@
                         </div>
                         <div class="modal-body">					
                             <div hidden class="form-group">
-                                <label>Titulo</label>
                                 <input name="acaoForm" type="text" class="form-control" value='insert' required>
                             </div>
                             <div class="form-group">
@@ -279,7 +278,7 @@
         <div id="editEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form>
+                    <form action="ReclamacoesClienteServlet" method="POST">
                         <div class="modal-header">						
                             <h4 class="modal-title">Editar Reclamação</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -297,6 +296,7 @@
                                     out.println("<div class='form-group'>");
                                     out.println("<label>Titulo</label>");
                                     out.println("<input type='text' value ='" + a.getDescAtendimento() + "' class='form-control' required>");
+                                    out.println("<input type='hidden' name='index' class='form-control' value='"+i+"' required>");
                                     out.println("</div>");
                                     out.println("<div class='form-group'>");
                                     out.println("<label>Descrição</label>");
@@ -318,11 +318,49 @@
                         %>
 
                         <div class="modal-footer">
+                            <input  type="hidden"  name="acaoForm" class="form-control" value="edit" required>
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-warning" value="Editar">
                         </div>
                     </form>
-                    <script>
+                </div>
+            </div>
+        </div>
+        <!-- Delete Modal HTML -->
+
+        <div id="deleteEmployeeModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="ReclamacoesClienteServlet" method="POST">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Deletar reclamação</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <input  type="hidden"  name="acaoForm" class="form-control" value="delet">
+                            <%
+                                if (request.getAttribute("index") != null) {
+                                        String i = (String) request.getAttribute("index");
+//                                
+                                        if (!i.equals("")) {
+                                            out.println("<input  type='hidden' name='index' class='form-control' value='" + i + "'>");
+                                        }
+                                }
+                            %>
+
+                            <p>Tem certeza que deseja deletar esta reclamação?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                            <input type="submit" class="btn btn-danger" value="Deletar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html> 
+<script>
                         
                 function openModalEdit(index){
                     window.location.href="/SAC_WEB2/ReclamacoesClienteServlet?index="+index+"&acao=edit";
@@ -356,32 +394,6 @@
                     }
                 });
 
-                    </script>
-                </div>
-            </div>
-        </div>
-        <!-- Delete Modal HTML -->
-
-        <div id="deleteEmployeeModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
-                            <h4 class="modal-title">Deletar reclamação</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">					
-                            <p>Tem certeza que deseja deletar esta reclamação?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                            <input type="submit" class="btn btn-danger" value="Deletar">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>       
+</script>
 
 

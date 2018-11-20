@@ -4,6 +4,11 @@
     Author     : LucasMello
 --%>
 
+<%@page import="Beans.Estado"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Beans.Cidade"%>
+<%@page import="java.util.List"%>
+<%@page import="DataAccessObject.CidadeDao"%>
 <%@page import="Beans.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -34,7 +39,7 @@
                         <li><a href="LogoutServlet">Logout</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="AlteracaoDeDadosCliente.jsp">Conta</a></li>
+                        <li><a href="AlteracaoDeDadosClienteServlet">Conta</a></li>
                     </ul>
 
                 </div><!-- /.navbar-collapse -->
@@ -50,13 +55,9 @@
 
                     <legend>Editar</legend>
                     
-
-
-      
-
                     <%
-//                        if (request.getAttribute("user") != null) {
-//                            Usuario user = (Usuario) request.getAttribute("user");
+                        if (request.getAttribute("user") != null) {
+                            Usuario user = (Usuario) request.getAttribute("user");
 //                                
 //                    <!-- Text Nome-->
 
@@ -65,23 +66,22 @@
                         out.println("<div class='col-md-4 inputGroupContainer'>");
                             out.println("<div class='input-group'>");
                                 out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>");
-                                out.println("<input  name='nome' placeholder='Nome' class='form-control'  type='text' disabled>");
+                                out.println("<input  name='nome' placeholder='Nome' value='"+user.getNomeUsuario()+"' class='form-control'  type='text' disabled>");
                             out.println("</div>");
                         out.println("</div>");
                     out.println("</div>");
-
-
-                 //   <!-- Text Sobrenome-->
-
-                        out.println("<div class='form-group'>");
-                        out.println("<label class='col-md-4 control-label' >CPF</label>"); 
+                    
+                    
+                    out.println("<div class='form-group'>");
+                        out.println("<label class='col-md-4 control-label'>CPF</label>");
                         out.println("<div class='col-md-4 inputGroupContainer'>");
                             out.println("<div class='input-group'>");
                                 out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>");
-                                out.println("<input name='cpf' placeholder='XXX.XXX.XXX-XX' class='form-control'  type='text' disabled>");
+                                out.println("<input  name='cpf'  value='"+user.getCpfUsuario()+"' class='form-control'  type='text' disabled>");
                             out.println("</div>");
                         out.println("</div>");
                     out.println("</div>");
+
                     //<!-- Text E-mail-->
                             
                     out.println("<div class='form-group'>");
@@ -89,7 +89,7 @@
                         out.println("<div class='col-md-4 inputGroupContainer'>");
                             out.println("<div class='input-group'>");
                                 out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-envelope'></i></span>");
-                                out.println("<input name='email' placeholder='E-Mail' class='form-control'  type='text'>");
+                                out.println("<input name='email'  value='"+user.getEmailUsuario()+"' placeholder='E-Mail' class='form-control'  type='text'>");
                             out.println("</div>");
                         out.println("</div>");
                     out.println("</div>");
@@ -102,7 +102,7 @@
                         out.println("<div class='col-md-4 inputGroupContainer'>");
                             out.println("<div class='input-group'>");
                                 out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-earphone'></i></span>");
-                                out.println("<input name='telefone' placeholder='(XX)XXX-XXXX' class='form-control' type=text'>");
+                                out.println("<input name='telefone'  value='"+user.getTelefoneUsuario()+"' placeholder='(XX)XXX-XXXX' class='form-control' type=text'>");
                             out.println("</div>");
                         out.println("</div>");
                     out.println("</div>");
@@ -110,11 +110,22 @@
                     //<!-- Text Endereco-->
 
                     out.println("<div class='form-group'>");
-                        out.println("<label class='col-md-4 control-label'>Endereço</label>  ");
+                        out.println("<label class='col-md-4 control-label'>Bairro</label>  ");
                         out.println("<div class='col-md-4 inputGroupContainer'>");
                             out.println("<div class='input-group'>");
                                 out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-home'></i></span>");
-                                out.println("<input name='endereco' placeholder='Endereço' class='form-control' type='text'>");
+                                out.println("<input name='bairro'  value='"+user.getBairroUsuario()+"' placeholder='Endereço' class='form-control' type='text'>");
+                            out.println("</div>");
+                        out.println("</div>");
+                    out.println("</div>");
+                    
+                    
+                    out.println("<div class='form-group'>");
+                        out.println("<label class='col-md-4 control-label'>Rua</label>  ");
+                        out.println("<div class='col-md-4 inputGroupContainer'>");
+                            out.println("<div class='input-group'>");
+                                out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-home'></i></span>");
+                                out.println("<input name='rua'  value='"+user.getRuaUsuario()+"' placeholder='Rua' class='form-control' type='text'>");
                             out.println("</div>");
                         out.println("</div>");
                     out.println("</div>");
@@ -128,8 +139,14 @@
                                 out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>");
                                 out.println("<select name='cidade' class='form-control selectpicker' >");
                                     out.println("<option value=' ' >Selecione sua cidade</option>");
-                                    out.println("<option>Curitiba</option>");
-                                    out.println("<option>Londrina</option>");
+                                    
+                                    if (request.getAttribute("cidades") != null) {
+                                        List<Cidade> cidades = (List<Cidade>) request.getAttribute("cidades");
+
+                                        for (Integer i = 0; i < cidades.size(); i++) {
+                                            out.println("<option>" + cidades.get(i).getNomeCidade() + "</option>");
+                                        }
+                                    }
                                 out.println("</select>");
                             out.println("</div>");
                         out.println("</div>");
@@ -144,8 +161,13 @@
                                 out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>");
                                 out.println("<select name='estado' class='form-control selectpicker' >");
                                     out.println("<option value=' ' >Selecione seu estado</option>");
-                                    out.println("<option>Paraná</option>");
-                                    out.println("<option>São Paulo</option>");
+                                    if (request.getAttribute("estados") != null) {
+                                        List<Estado> estados = (List<Estado>) request.getAttribute("estados");
+
+                                        for (Integer i = 0; i < estados.size(); i++) {
+                                            out.println("<option>" + estados.get(i).getNomeEstado()+ "</option>");
+                                        }
+                                    }
                                 out.println("</select>");
                             out.println("</div>");
                         out.println("</div>");
@@ -156,12 +178,12 @@
                         out.println("<div class='col-md-4 inputGroupContainer'>");
                             out.println("<div class='input-group'>");
                                 out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-home'></i></span>");
-                                out.println("<input name='senha' placeholder='Senha' class='form-control' type='text'>");
+                                out.println("<input name='senha' value='"+user.getSenhaLoginUsuario()+"' placeholder='Senha' class='form-control' type='text'>");
                             out.println("</div>");
                         out.println("</div>");
                     out.println("</div>");
-//                        }
-
+                        }
+                        
 
                     %>
                     
@@ -170,8 +192,9 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label"></label>
                         <div class="col-md-4">
+                            <input  type="hidden"  name="acaoForm" class="form-control" value="update">
                             <button type="submit" class="btn btn-warning" >Editar</button>
-                            <button type="submit" class="btn btn-primary" formaction="ReclamacoesCliente.jsp">Voltar</button>
+                            <button class="btn btn-primary" formaction="ReclamacoesClienteServlet">Voltar</button>
                         </div>
                     </div>
                 </fieldset>
