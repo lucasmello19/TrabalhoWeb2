@@ -5,7 +5,7 @@
  */
 package Servlets;
 
-import Beans.Usuario;
+import static Connection.ConnectionFactory.status;
 import DataAccessObject.UsuarioDao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +14,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,7 +36,7 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-           
+
             String login = request.getParameter("email");
             String senha = request.getParameter("senha");
             String tipo = request.getParameter("optradio");
@@ -96,10 +95,10 @@ public class LoginServlet extends HttpServlet {
 ////                out.println("</html>");
 //            }
             /* TODO output your page here. You may use following sample code. */
-            
-        }
-        catch (Exception ex){
-            out.println("Alguma coisa deu errado: " + ex.getMessage());
+
+        } catch (Exception ex) {
+            request.setAttribute("msg", status);
+            request.getRequestDispatcher("erroServlet").forward(request, response);
         }
     }
 

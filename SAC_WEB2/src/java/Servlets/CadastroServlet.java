@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import static Connection.ConnectionFactory.status;
 
 /**
  *
@@ -35,7 +36,8 @@ public class CadastroServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        PrintWriter out = response.getWriter();
+        try {
             String nome = request.getParameter("nome");
             String cpf = request.getParameter("cpf");
             String email = request.getParameter("email");
@@ -44,7 +46,7 @@ public class CadastroServlet extends HttpServlet {
             //request.setAttibute("listaIDAluno", estados);
             String senha = request.getParameter("senha");
             String confsenha = request.getParameter("confSenha");
-            
+
             UsuarioDao nomeDao = new UsuarioDao();
             //Essa linha abaixo tava dando erro na hora de compilar aqui, então fiz as linhas abaixo dela.
             //Boolean retorno = nomeDao.save(nome, cpf, email, end, 409, "jardim botanico", "80210330", "casa 1", fone, senha, 1, 1, 1);
@@ -61,17 +63,14 @@ public class CadastroServlet extends HttpServlet {
             usuarioParaCadastro.setComplementoUsuario("casa 1");
             usuarioParaCadastro.setTelefoneUsuario(fone);
             usuarioParaCadastro.setSenhaLoginUsuario(senha);
-            
-            int valorRetorno = nomeDao.save(usuarioParaCadastro); 
-            
+
+            int valorRetorno = nomeDao.save(usuarioParaCadastro);
+
             //Caso o valorRetorno seja 1, vai ficar true, caso contrário fica false.
             //isso é um if ternário
             Boolean retorno = valorRetorno == 1 ? true : false;
-            
 
-            
-            //HttpSession session = request.getSession();
-            if (retorno){
+            if (retorno == true) {
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
@@ -84,14 +83,16 @@ public class CadastroServlet extends HttpServlet {
                 out.println("</body>");
                 out.println("</html>");
                 response.sendRedirect("index.jsp");
+
+            } else {
+                //response.sendRedirect("erro.jsp");
+                request.setAttribute("msg", status);
+                request.getRequestDispatcher("erroServlet").forward(request, response);
             }
-            else{
-                response.sendRedirect("erro.jsp");
-            }
-               
-        }
-        catch(Exception e){
-            e.printStackTrace();
+
+        } catch (Exception ex) {
+            request.setAttribute("msg", status);
+            request.getRequestDispatcher("erroServlet").forward(request, response);
         }
     }
 
