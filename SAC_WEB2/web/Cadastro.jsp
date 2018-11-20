@@ -5,6 +5,7 @@
 --%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="dao" class="DataAccessObject.EstadoDao"/>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -112,8 +113,8 @@
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                 <select name="estado" class="form-control selectpicker" >
                                     <option value=" " >Selecione seu estado</option>
-                                    <c:forEach var="uf" items="${estados}">
-                                        <option value="${uf.id}">${uf.nome}</option>
+                                    <c:forEach var="uf" items="${dao.findAll()}">
+                                        <option value="${uf.estado_id}">${uf.nome}</option>
                                     </c:forEach>
                                 </select>
                             </div>
