@@ -5,7 +5,11 @@
  */
 package Servlets;
 
+import Beans.Cidade;
+import Beans.Estado;
 import Beans.Usuario;
+import DataAccessObject.CidadeDao;
+import DataAccessObject.EstadoDao;
 import DataAccessObject.UsuarioDao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -53,10 +57,23 @@ public class AlteracaoDeDadosClienteServlet extends HttpServlet {
             user.setComplementoUsuario("fundos");
             user.setCpfUsuario("9609625843");
             user.setEmailUsuario("lucas@lucas.com");
-//            user.setIdCidadeUsuario("itapetininga");
-//            user.setIdEstadoUsuario("são paulo");
-//
-//            request.setAttribute("user", user);
+            user.setSenhaLoginUsuario("sivlsjbvskfv");
+            user.setRuaUsuario("americo izzo");
+            user.setTelefoneUsuario("27191900");
+            user.setNomeUsuario("lucas mello");
+
+            List<Cidade> cidades = new ArrayList<Cidade>();
+            CidadeDao daoCidade = new CidadeDao();
+            cidades = daoCidade.findAll();
+            
+            List<Estado> estados = new ArrayList<Estado>();
+            EstadoDao estadoDao = new EstadoDao();
+            estados = estadoDao.findAll();
+            
+            request.setAttribute("user", user);
+            request.setAttribute("cidades", cidades);
+            request.setAttribute("estados", estados);
+
 
             RequestDispatcher rd = request.getRequestDispatcher("AlteracaoDeDadosCliente.jsp");
             rd.forward(request, response);
