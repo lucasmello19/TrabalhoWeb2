@@ -4,6 +4,7 @@
     Author     : LucasMello
 --%>
 
+<%@page import="Beans.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -48,108 +49,122 @@
                 <fieldset>
 
                     <legend>Editar</legend>
-
-                    <!-- Text Nome-->
-
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Nome completo</label>  
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input  name="nome" placeholder="Nome" class="form-control"  type="text" disabled>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Text Sobrenome-->
-
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" >CPF</label> 
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input name="cpf" placeholder="XXX.XXX.XXX-XX" class="form-control"  type="text" disabled>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Text E-mail-->
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">E-Mail</label>  
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input name="email" placeholder="E-Mail" class="form-control"  type="text">
-                            </div>
-                        </div>
-                    </div>
+                    
 
 
-                    <!-- Text Telefone-->
+      
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Telefone</label>  
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                <input name="telefone" placeholder="(XX)XXX-XXXX" class="form-control" type="text">
-                            </div>
-                        </div>
-                    </div>
+                    <%
+//                        if (request.getAttribute("user") != null) {
+//                            Usuario user = (Usuario) request.getAttribute("user");
+//                                
+//                    <!-- Text Nome-->
 
-                    <!-- Text Endereco-->
+                        out.println("<div class='form-group'>");
+                        out.println("<label class='col-md-4 control-label'>Nome completo</label>");
+                        out.println("<div class='col-md-4 inputGroupContainer'>");
+                            out.println("<div class='input-group'>");
+                                out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>");
+                                out.println("<input  name='nome' placeholder='Nome' class='form-control'  type='text' disabled>");
+                            out.println("</div>");
+                        out.println("</div>");
+                    out.println("</div>");
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Endereço</label>  
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <input name="endereco" placeholder="Endereço" class="form-control" type="text">
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Text Cidade-->
+                 //   <!-- Text Sobrenome-->
 
-                    <div class="form-group"> 
-                        <label class="col-md-4 control-label">Cidade</label>
-                        <div class="col-md-4 selectContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                <select name="cidade" class="form-control selectpicker" >
-                                    <option value=" " >Selecione sua cidade</option>
-                                    <option>Curitiba</option>
-                                    <option>Londrina</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                        out.println("<div class='form-group'>");
+                        out.println("<label class='col-md-4 control-label' >CPF</label>"); 
+                        out.println("<div class='col-md-4 inputGroupContainer'>");
+                            out.println("<div class='input-group'>");
+                                out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>");
+                                out.println("<input name='cpf' placeholder='XXX.XXX.XXX-XX' class='form-control'  type='text' disabled>");
+                            out.println("</div>");
+                        out.println("</div>");
+                    out.println("</div>");
+                    //<!-- Text E-mail-->
+                            
+                    out.println("<div class='form-group'>");
+                        out.println("<label class='col-md-4 control-label'>E-Mail</label>  ");
+                        out.println("<div class='col-md-4 inputGroupContainer'>");
+                            out.println("<div class='input-group'>");
+                                out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-envelope'></i></span>");
+                                out.println("<input name='email' placeholder='E-Mail' class='form-control'  type='text'>");
+                            out.println("</div>");
+                        out.println("</div>");
+                    out.println("</div>");
 
-                    <!-- Select Estado -->
 
-                    <div class="form-group"> 
-                        <label class="col-md-4 control-label">Estado</label>
-                        <div class="col-md-4 selectContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                <select name="estado" class="form-control selectpicker" >
-                                    <option value=" " >Selecione seu estado</option>
-                                    <option>Paraná</option>
-                                    <option>São Paulo</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    //<!-- Text Telefone-->
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Senha</label>  
-                        <div class="col-md-4 inputGroupContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                                <input name="senha" placeholder="Senha" class="form-control" type="text">
-                            </div>
-                        </div>
-                    </div>
+                    out.println("<div class='form-group'>");
+                        out.println("<label class='col-md-4 control-label'>Telefone</label>  ");
+                        out.println("<div class='col-md-4 inputGroupContainer'>");
+                            out.println("<div class='input-group'>");
+                                out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-earphone'></i></span>");
+                                out.println("<input name='telefone' placeholder='(XX)XXX-XXXX' class='form-control' type=text'>");
+                            out.println("</div>");
+                        out.println("</div>");
+                    out.println("</div>");
+
+                    //<!-- Text Endereco-->
+
+                    out.println("<div class='form-group'>");
+                        out.println("<label class='col-md-4 control-label'>Endereço</label>  ");
+                        out.println("<div class='col-md-4 inputGroupContainer'>");
+                            out.println("<div class='input-group'>");
+                                out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-home'></i></span>");
+                                out.println("<input name='endereco' placeholder='Endereço' class='form-control' type='text'>");
+                            out.println("</div>");
+                        out.println("</div>");
+                    out.println("</div>");
+
+                    //<!-- Text Cidade-->
+
+                    out.println("<div class='form-group'> ");
+                        out.println("<label class='col-md-4 control-label'>Cidade</label>");
+                        out.println("<div class='col-md-4 selectContainer'>");
+                            out.println("<div class='input-group'>");
+                                out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>");
+                                out.println("<select name='cidade' class='form-control selectpicker' >");
+                                    out.println("<option value=' ' >Selecione sua cidade</option>");
+                                    out.println("<option>Curitiba</option>");
+                                    out.println("<option>Londrina</option>");
+                                out.println("</select>");
+                            out.println("</div>");
+                        out.println("</div>");
+                    out.println("</div>");
+
+                    //<!-- Select Estado -->
+
+                    out.println("<div class='form-group'> ");
+                        out.println("<label class='col-md-4 control-label'>Estado</label>");
+                        out.println("<div class='col-md-4 selectContainer'>");
+                            out.println("<div class='input-group'>");
+                                out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>");
+                                out.println("<select name='estado' class='form-control selectpicker' >");
+                                    out.println("<option value=' ' >Selecione seu estado</option>");
+                                    out.println("<option>Paraná</option>");
+                                    out.println("<option>São Paulo</option>");
+                                out.println("</select>");
+                            out.println("</div>");
+                        out.println("</div>");
+                    out.println("</div>");
+
+                    out.println("<div class='form-group'>");
+                        out.println("<label class='col-md-4 control-label'>Senha</label>  ");
+                        out.println("<div class='col-md-4 inputGroupContainer'>");
+                            out.println("<div class='input-group'>");
+                                out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-home'></i></span>");
+                                out.println("<input name='senha' placeholder='Senha' class='form-control' type='text'>");
+                            out.println("</div>");
+                        out.println("</div>");
+                    out.println("</div>");
+//                        }
+
+
+                    %>
+                    
 
                     <!-- Buttons -->
                     <div class="form-group">
