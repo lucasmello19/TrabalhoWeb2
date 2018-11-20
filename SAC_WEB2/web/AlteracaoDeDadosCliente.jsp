@@ -39,7 +39,7 @@
                         <li><a href="LogoutServlet">Logout</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="AlteracaoDeDadosCliente.jsp">Conta</a></li>
+                        <li><a href="AlteracaoDeDadosClienteServlet">Conta</a></li>
                     </ul>
 
                 </div><!-- /.navbar-collapse -->
@@ -182,7 +182,7 @@
                         <label class="col-md-4 control-label"></label>
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-warning" >Editar</button>
-                            <button type="submit" class="btn btn-primary" formaction="ReclamacoesCliente.jsp">Voltar</button>
+                            <button type="submit" class="btn btn-primary" formaction="ReclamacoesClienteServlet">Voltar</button>
                         </div>
                     </div>
                 </fieldset>
