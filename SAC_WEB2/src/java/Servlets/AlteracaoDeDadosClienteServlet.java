@@ -44,60 +44,40 @@ public class AlteracaoDeDadosClienteServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-
+         
 //            HttpSession session = request.getSession();
 //            String nome = (String)session.getAttribute("nome");
 //
 //                UsuarioDao dao = new UsuarioDao();
 //                Usuario user = (Usuario) dao.findByFilter(id)
-            String acaoForm = request.getParameter("acaoForm");
-            if (acaoForm != null) {
-                if (acaoForm.equals("update")) {
-                    Usuario user = new Usuario();
-                    user.setBairroUsuario((String) request.getAttribute("bairro"));
-                    user.setCepUsuario((String) request.getAttribute("cep"));
-                    user.setComplementoUsuario((String) request.getAttribute("complemento"));
-                    user.setCpfUsuario((String) request.getAttribute("cpf"));
-                    user.setEmailUsuario((String) request.getAttribute("email"));
-                    user.setSenhaLoginUsuario((String) request.getAttribute("senha"));
-                    user.setRuaUsuario((String) request.getAttribute("rua"));
-                    user.setTelefoneUsuario((String) request.getAttribute("telefone"));
-                    user.setNomeUsuario((String) request.getAttribute("nome"));
-//                    user.setIdCidadeUsuario((String) request.getAttribute("cidade"));
-//                    user.setIdEstadoUsuario(user.getIdCidadeUsuario().getIdEstado());
 
-                    UsuarioDao dao = new UsuarioDao();
-                    dao.update(user);
-                }
+            Usuario user = new Usuario();
+            user.setBairroUsuario("Vila piedade");
+            user.setCepUsuario("18210370");
+            user.setComplementoUsuario("fundos");
+            user.setCpfUsuario("9609625843");
+            user.setEmailUsuario("lucas@lucas.com");
+            user.setSenhaLoginUsuario("sivlsjbvskfv");
+            user.setRuaUsuario("americo izzo");
+            user.setTelefoneUsuario("27191900");
+            user.setNomeUsuario("lucas mello");
 
-            } else {
+            List<Cidade> cidades = new ArrayList<Cidade>();
+            CidadeDao daoCidade = new CidadeDao();
+            cidades = daoCidade.findAll();
+            
+            List<Estado> estados = new ArrayList<Estado>();
+            EstadoDao estadoDao = new EstadoDao();
+            estados = estadoDao.findAll();
+            
+            request.setAttribute("user", user);
+            request.setAttribute("cidades", cidades);
+            request.setAttribute("estados", estados);
 
-                Usuario user = new Usuario();
-                user.setBairroUsuario("Vila piedade");
-                user.setCepUsuario("18210370");
-                user.setComplementoUsuario("fundos");
-                user.setCpfUsuario("9609625843");
-                user.setEmailUsuario("lucas@lucas.com");
-                user.setSenhaLoginUsuario("sivlsjbvskfv");
-                user.setRuaUsuario("americo izzo");
-                user.setTelefoneUsuario("27191900");
-                user.setNomeUsuario("lucas mello");
 
-                List<Cidade> cidades = new ArrayList<Cidade>();
-                CidadeDao daoCidade = new CidadeDao();
-                cidades = daoCidade.findAll();
-
-                List<Estado> estados = new ArrayList<Estado>();
-                EstadoDao estadoDao = new EstadoDao();
-                estados = estadoDao.findAll();
-
-                request.setAttribute("user", user);
-                request.setAttribute("cidades", cidades);
-                request.setAttribute("estados", estados);
-
-                RequestDispatcher rd = request.getRequestDispatcher("AlteracaoDeDadosCliente.jsp");
-                rd.forward(request, response);
-            }
+            RequestDispatcher rd = request.getRequestDispatcher("AlteracaoDeDadosCliente.jsp");
+            rd.forward(request, response);
+//            }
 
         }
     }

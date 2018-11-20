@@ -50,7 +50,7 @@
 
         <div class="container">
 
-            <form class="well form-horizontal" action="AlteracaoDeDadosClienteServlet" method="POST"  id="contact_form">
+            <form class="well form-horizontal" action=" " method="post"  id="contact_form">
                 <fieldset>
 
                     <legend>Editar</legend>
@@ -129,17 +129,6 @@
                             out.println("</div>");
                         out.println("</div>");
                     out.println("</div>");
-                    
-                    
-                    out.println("<div class='form-group'>");
-                        out.println("<label class='col-md-4 control-label'>Complemento</label>  ");
-                        out.println("<div class='col-md-4 inputGroupContainer'>");
-                            out.println("<div class='input-group'>");
-                                out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-home'></i></span>");
-                                out.println("<input name='complemento'  value='"+user.getComplementoUsuario()+"' placeholder='Complemento' class='form-control' type='text'>");
-                            out.println("</div>");
-                        out.println("</div>");
-                    out.println("</div>");
 
                     //<!-- Text Cidade-->
 
@@ -149,12 +138,13 @@
                             out.println("<div class='input-group'>");
                                 out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>");
                                 out.println("<select name='cidade' class='form-control selectpicker' >");
+                                    out.println("<option value=' ' >Selecione sua cidade</option>");
                                     
                                     if (request.getAttribute("cidades") != null) {
                                         List<Cidade> cidades = (List<Cidade>) request.getAttribute("cidades");
 
                                         for (Integer i = 0; i < cidades.size(); i++) {
-                                            out.println("<option value='"+ cidades.get(i).getNomeCidade()+"'>" + cidades.get(i).getNomeCidade() + "</option>");
+                                            out.println("<option>" + cidades.get(i).getNomeCidade() + "</option>");
                                         }
                                     }
                                 out.println("</select>");
@@ -164,24 +154,24 @@
 
                     //<!-- Select Estado -->
 
-//                    out.println("<div class='form-group'> ");
-//                        out.println("<label class='col-md-4 control-label'>Estado</label>");
-//                        out.println("<div class='col-md-4 selectContainer'>");
-//                            out.println("<div class='input-group'>");
-//                                out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>");
-//                                out.println("<select name='estado' class='form-control selectpicker' >");
-//                                    out.println("<option value=' ' >Selecione seu estado</option>");
-//                                    if (request.getAttribute("estados") != null) {
-//                                        List<Estado> estados = (List<Estado>) request.getAttribute("estados");
-//
-//                                        for (Integer i = 0; i < estados.size(); i++) {
-//                                            out.println("<option>" + estados.get(i).getNomeEstado()+ "</option>");
-//                                        }
-//                                    }
-//                                out.println("</select>");
-//                            out.println("</div>");
-//                        out.println("</div>");
-//                    out.println("</div>");
+                    out.println("<div class='form-group'> ");
+                        out.println("<label class='col-md-4 control-label'>Estado</label>");
+                        out.println("<div class='col-md-4 selectContainer'>");
+                            out.println("<div class='input-group'>");
+                                out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>");
+                                out.println("<select name='estado' class='form-control selectpicker' >");
+                                    out.println("<option value=' ' >Selecione seu estado</option>");
+                                    if (request.getAttribute("estados") != null) {
+                                        List<Estado> estados = (List<Estado>) request.getAttribute("estados");
+
+                                        for (Integer i = 0; i < estados.size(); i++) {
+                                            out.println("<option>" + estados.get(i).getNomeEstado()+ "</option>");
+                                        }
+                                    }
+                                out.println("</select>");
+                            out.println("</div>");
+                        out.println("</div>");
+                    out.println("</div>");
 
                     out.println("<div class='form-group'>");
                         out.println("<label class='col-md-4 control-label'>Senha</label>  ");
