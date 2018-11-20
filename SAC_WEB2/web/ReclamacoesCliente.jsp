@@ -248,7 +248,6 @@
                         </div>
                         <div class="modal-body">					
                             <div hidden class="form-group">
-                                <label>Titulo</label>
                                 <input name="acaoForm" type="text" class="form-control" value='insert' required>
                             </div>
                             <div class="form-group">
@@ -297,6 +296,7 @@
                                     out.println("<div class='form-group'>");
                                     out.println("<label>Titulo</label>");
                                     out.println("<input type='text' value ='" + a.getDescAtendimento() + "' class='form-control' required>");
+                                    out.println("<input type='hidden' name='index' class='form-control' value='"+i+"' required>");
                                     out.println("</div>");
                                     out.println("<div class='form-group'>");
                                     out.println("<label>Descrição</label>");
@@ -318,6 +318,7 @@
                         %>
 
                         <div class="modal-footer">
+                            <input  type=hidden"  name="acaoForm" class="form-control" value="edit" required>
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-warning" value="Editar">
                         </div>
@@ -370,7 +371,10 @@
                             <h4 class="modal-title">Deletar reclamação</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
-                        <div class="modal-body">					
+                        <div class="modal-body">
+                            <input  type="hidden"  name="acaoForm" class="form-control" value="add" required>
+                            <input  type="hidden"  name="index"    class="form-control" value="0" required>
+
                             <p>Tem certeza que deseja deletar esta reclamação?</p>
                         </div>
                         <div class="modal-footer">

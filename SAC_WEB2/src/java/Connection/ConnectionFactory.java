@@ -12,10 +12,14 @@ import java.sql.Statement;
 public class ConnectionFactory {
 
     // Carregando o JDBC Driver padrão
-    private static final String URL = "jdbc:mysql://localhost:3306/Web2";
+    //private static final String URL = "jdbc:mysql://localhost:3306/Web2";
+    private static final String URL = "jdbc:mysql://localhost:3306/mydb";
+
     private static final String DRIVER_CLASS_MYSQL = "com.mysql.jdbc.Driver";
     private static final String USER = "root";
-    private static final String PASS = "root";
+    private static final String PASS = "";
+    //private static final String PASS = "root";
+
     public static String status = "Banco de dados não conectado...";
 
 //Método de Conexão//
