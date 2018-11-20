@@ -21,9 +21,15 @@ public class UsuarioDao {
     private static final String SQL_FIND_FILTER = "SELECT * FROM tb_usuario WHERE nome_completo LIKE ? OR cpf LIKE ? OR email LIKE ? OR telefone LIKE ?";
     private static final String SQL_FIND_LOGIN = "SELECT * FROM tb_usuario WHERE email LIKE ? AND senha LIKE ?";
 
-    //salvar usuario 
+//salvar usuario 
+    
     public int save(Usuario usuario) {
         Connection conn = ConnectionFactory.getConnection();
+        if (conn == null) {
+            System.out.println("Erro ao conectar no banco de dados");
+            //Se a conexão for nula já faz o retorno pra não executar o resto da função.
+            return 0;
+        }
         PreparedStatement pstm = null;
         int result = 0;
         try {
