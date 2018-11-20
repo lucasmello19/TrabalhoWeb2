@@ -47,9 +47,9 @@ public class UsuarioDao {
             pstm.setString(8, usuario.getComplementoUsuario());
             pstm.setString(9, usuario.getTelefoneUsuario());
             pstm.setString(10, usuario.getSenhaLoginUsuario());
-            pstm.setInt(11, usuario.getPerfilUsuario().getIdPerfil());
-            pstm.setInt(12, usuario.getIdCidadeUsuario().getIdCidade());
-            pstm.setInt(13, usuario.getIdEstadoUsuario().getIdEstado());
+            pstm.setInt(11, usuario.getPerfilUsuario());
+            pstm.setInt(12, usuario.getIdCidadeUsuario());
+            pstm.setInt(13, usuario.getIdEstadoUsuario());
 
             //retonar um valor int (1 para sucesso e 2 para insucesso) para retornar para a interface gráfica para verificar o sucesso ou na inserção não 
             result = pstm.executeUpdate(); 
@@ -88,10 +88,10 @@ public class UsuarioDao {
             pstm.setString(8, usuario.getComplementoUsuario());
             pstm.setString(9, usuario.getTelefoneUsuario());
             pstm.setString(10, usuario.getSenhaLoginUsuario());
-            pstm.setInt(11, usuario.getPerfilUsuario().getIdPerfil());
-            pstm.setInt(12, usuario.getLoginIdUsuario().getIdLogin());
-            pstm.setInt(13, usuario.getIdCidadeUsuario().getIdCidade());
-            pstm.setInt(14, usuario.getIdEstadoUsuario().getIdEstado());
+            pstm.setInt(11, usuario.getPerfilUsuario());
+            pstm.setInt(12, usuario.getLoginIdUsuario());
+            pstm.setInt(13, usuario.getIdCidadeUsuario());
+            pstm.setInt(14, usuario.getIdEstadoUsuario());
     
             //retonar um valor int (1 para sucesso e 2 para insucesso) para retornar para a interface gráfica para verificar o sucesso ou na inserção não 
             result = pstm.executeUpdate(); 

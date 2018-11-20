@@ -15,15 +15,15 @@ public class Usuario implements Serializable {
     private String complementoUsuario;
     private String telefoneUsuario;
     private String senhaLoginUsuario;
-    private Perfil perfilUsuario;
-    private Login loginIdUsuario;
-    private Cidade idCidadeUsuario;
-    private Estado idEstadoUsuario;
+    private int perfilUsuario;
+    private int loginIdUsuario;
+    private int idCidadeUsuario;
+    private int idEstadoUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nomeUsuario, String cpfUsuario, String emailUsuario, String ruaUsuario, int nrUsuario, String bairroUsuario, String cepUsuario, String complementoUsuario, String telefoneUsuario, String senhaLoginUsuario, Perfil perfilUsuario, Login loginIdUsuario, Cidade idCidadeUsuario, Estado idEstadoUsuario) {
+    public Usuario(int idUsuario, String nomeUsuario, String cpfUsuario, String emailUsuario, String ruaUsuario, int nrUsuario, String bairroUsuario, String cepUsuario, String complementoUsuario, String telefoneUsuario, String senhaLoginUsuario, int perfilUsuario, int loginIdUsuario, int idCidadeUsuario, int idEstadoUsuario) {
         this.idUsuario = idUsuario;
         this.nomeUsuario = nomeUsuario;
         this.cpfUsuario = cpfUsuario;
@@ -129,35 +129,35 @@ public class Usuario implements Serializable {
         this.senhaLoginUsuario = senhaLoginUsuario;
     }
 
-    public Perfil getPerfilUsuario() {
+    public int getPerfilUsuario() {
         return perfilUsuario;
     }
 
-    public void setPerfilUsuario(Perfil perfilUsuario) {
+    public void setPerfilUsuario(int perfilUsuario) {
         this.perfilUsuario = perfilUsuario;
     }
 
-    public Login getLoginIdUsuario() {
+    public int getLoginIdUsuario() {
         return loginIdUsuario;
     }
 
-    public void setLoginIdUsuario(Login loginIdUsuario) {
+    public void setLoginIdUsuario(int loginIdUsuario) {
         this.loginIdUsuario = loginIdUsuario;
     }
 
-    public Cidade getIdCidadeUsuario() {
+    public int getIdCidadeUsuario() {
         return idCidadeUsuario;
     }
 
-    public void setIdCidadeUsuario(Cidade idCidadeUsuario) {
+    public void setIdCidadeUsuario(int idCidadeUsuario) {
         this.idCidadeUsuario = idCidadeUsuario;
     }
 
-    public Estado getIdEstadoUsuario() {
+    public int getIdEstadoUsuario() {
         return idEstadoUsuario;
     }
 
-    public void setIdEstadoUsuario(Estado idEstadoUsuario) {
+    public void setIdEstadoUsuario(int idEstadoUsuario) {
         this.idEstadoUsuario = idEstadoUsuario;
     }
 

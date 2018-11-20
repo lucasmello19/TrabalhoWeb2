@@ -6,9 +6,9 @@ public class Cidade implements Serializable{
     
     private int idCidade;
     private String nomeCidade;
-    private Estado idEstado;
+    private int idEstado;
 
-    public Cidade(int idCidade, String nomeCidade, Estado idEstado) {
+    public Cidade(int idCidade, String nomeCidade, int idEstado) {
         this.idCidade = idCidade;
         this.nomeCidade = nomeCidade;
         this.idEstado = idEstado;
@@ -33,11 +33,11 @@ public class Cidade implements Serializable{
         this.nomeCidade = nomeCidade;
     }
 
-    public Estado getIdEstado() {
+    public int getIdEstado() {
         return idEstado;
     }
 
-    public void setIdEstado(Estado idEstado) {
+    public void setIdEstado(int idEstado) {
         this.idEstado = idEstado;
     }
     

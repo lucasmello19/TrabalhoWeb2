@@ -63,8 +63,7 @@ public class AlteracaoDeDadosClienteServlet extends HttpServlet {
                     user.setRuaUsuario((String) request.getAttribute("rua"));
                     user.setTelefoneUsuario((String) request.getAttribute("telefone"));
                     user.setNomeUsuario((String) request.getAttribute("nome"));
-//                    user.setIdCidadeUsuario((String) request.getAttribute("cidade"));
-//                    user.setIdEstadoUsuario(user.getIdCidadeUsuario().getIdEstado());
+                    user.setIdCidadeUsuario((String) request.getAttribute("cidade"));
 
                     UsuarioDao dao = new UsuarioDao();
                     dao.update(user);
