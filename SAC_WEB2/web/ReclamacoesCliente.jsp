@@ -323,41 +323,6 @@
                             <input type="submit" class="btn btn-warning" value="Editar">
                         </div>
                     </form>
-                    <script>
-                        
-                function openModalEdit(index){
-                    window.location.href="/SAC_WEB2/ReclamacoesClienteServlet?index="+index+"&acao=edit";
-                } 
-                function openModalDelet(index){
-                    window.location.href="/SAC_WEB2/ReclamacoesClienteServlet?index="+index+"&acao=delet";
-                } 
-                function openModalAdd(){
-                    window.location.href="/SAC_WEB2/ReclamacoesClienteServlet?acao=add";
-                }
-                $(document).ready(function() {
-                    var urlParams = new URLSearchParams(window.location.search);
-                    
-                    var index = urlParams.get('index');
-                    var acao = urlParams.get('acao');
-
-                    if (index !== null){
-                        
-                        if (acao !== null){
-                            if(acao == "edit"){
-                                $('#editEmployeeModal').modal('show');
-
-                            }else if(acao == "delet"){
-                                $('#deleteEmployeeModal').modal('show');
-                            }
-                        }
-                    }else{
-                        if(acao == "add"){
-                            $('#addEmployeeModal').modal('show');
-                        }
-                    }
-                });
-
-                    </script>
                 </div>
             </div>
         </div>
@@ -394,6 +359,41 @@
             </div>
         </div>
     </body>
-</html>       
+</html> 
+<script>
+                        
+                function openModalEdit(index){
+                    window.location.href="/SAC_WEB2/ReclamacoesClienteServlet?index="+index+"&acao=edit";
+                } 
+                function openModalDelet(index){
+                    window.location.href="/SAC_WEB2/ReclamacoesClienteServlet?index="+index+"&acao=delet";
+                } 
+                function openModalAdd(){
+                    window.location.href="/SAC_WEB2/ReclamacoesClienteServlet?acao=add";
+                }
+                $(document).ready(function() {
+                    var urlParams = new URLSearchParams(window.location.search);
+                    
+                    var index = urlParams.get('index');
+                    var acao = urlParams.get('acao');
+
+                    if (index !== null){
+                        
+                        if (acao !== null){
+                            if(acao == "edit"){
+                                $('#editEmployeeModal').modal('show');
+
+                            }else if(acao == "delet"){
+                                $('#deleteEmployeeModal').modal('show');
+                            }
+                        }
+                    }else{
+                        if(acao == "add"){
+                            $('#addEmployeeModal').modal('show');
+                        }
+                    }
+                });
+
+</script>
 
 

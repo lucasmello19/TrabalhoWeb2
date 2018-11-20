@@ -99,11 +99,11 @@
                     //<!-- Text Endereco-->
 
                     out.println("<div class='form-group'>");
-                        out.println("<label class='col-md-4 control-label'>Endereço</label>  ");
+                        out.println("<label class='col-md-4 control-label'>Bairro</label>  ");
                         out.println("<div class='col-md-4 inputGroupContainer'>");
                             out.println("<div class='input-group'>");
                                 out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-home'></i></span>");
-                                out.println("<input name='endereco'  value='"+user.getBairroUsuario()+"' placeholder='Endereço' class='form-control' type='text'>");
+                                out.println("<input name='bairro'  value='"+user.getBairroUsuario()+"' placeholder='Endereço' class='form-control' type='text'>");
                             out.println("</div>");
                         out.println("</div>");
                     out.println("</div>");
@@ -181,8 +181,9 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label"></label>
                         <div class="col-md-4">
+                            <input  type="hidden"  name="acaoForm" class="form-control" value="update">
                             <button type="submit" class="btn btn-warning" >Editar</button>
-                            <button type="submit" class="btn btn-primary" formaction="ReclamacoesClienteServlet">Voltar</button>
+                            <button class="btn btn-primary" formaction="ReclamacoesClienteServlet">Voltar</button>
                         </div>
                     </div>
                 </fieldset>
