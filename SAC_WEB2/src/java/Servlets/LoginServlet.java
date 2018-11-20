@@ -9,6 +9,7 @@ import static Connection.ConnectionFactory.status;
 import DataAccessObject.UsuarioDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,18 +40,43 @@ public class LoginServlet extends HttpServlet {
 
             String login = request.getParameter("email");
             String senha = request.getParameter("senha");
-            String tipo = request.getParameter("optradio");
-            out.println("Olá, " + login + tipo);
+            String perfil = request.getParameter("optradio");
+            out.println("Olá, " + login + perfil);
             out.println("<p>Descomente as linhas no 'LoginServlet' pra fazer o logar e redirecionar.</p>");
             UsuarioDao userDao = new UsuarioDao();
+
+            //falta verificar login e senha
+            switch (perfil) {
+                case "cliente":
+                    {
+                        RequestDispatcher rd = getServletContext().
+                                getRequestDispatcher("/ReclamacoesFuncionario.jsp");
+                        rd.include(request, response);
+                        break;
+                    }
+                case "funcionario":
+                    {
+                        RequestDispatcher rd = getServletContext().
+                                getRequestDispatcher("/AtendimentosFuncionario.jsp");
+                        rd.include(request, response);
+                        break;
+                    }
+                default:
+                    {
+                        RequestDispatcher rd = getServletContext().
+                                getRequestDispatcher("/AtendimentosGerente.jsp");
+                        rd.include(request, response);
+                        break;
+                    }
+            }
 //            Boolean retorno = userDao.carregarPessoas(login, senha);
 //            
 //            HttpSession session = request.getSession();
 //            if (retorno) {
 //                
 //                Usuario user = userDao.carregarUsuario(login, senha);
-//                
-//                
+//
+//
 //                
 //                Login loginBean = new Login();
 //                
@@ -59,7 +85,7 @@ public class LoginServlet extends HttpServlet {
 //                
 //                session.setAttribute("login", loginBean);
 //
-//                
+//
 //                
 //                session.setAttribute(senha, out);
 //                
@@ -95,7 +121,7 @@ public class LoginServlet extends HttpServlet {
 ////                out.println("</html>");
 //            }
             /* TODO output your page here. You may use following sample code. */
-
+            
         } catch (Exception ex) {
             request.setAttribute("msg", status);
             request.getRequestDispatcher("erroServlet").forward(request, response);

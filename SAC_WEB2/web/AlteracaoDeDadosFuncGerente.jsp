@@ -1,7 +1,7 @@
 <%-- 
-    Document   : AlteracaoDeDadosCliente
-    Created on : 03/11/2018, 17:51:39
-    Author     : LucasMello
+    Document   : AlteracaoDeDadosFuncGerente
+    Created on : 20/11/2018, 15:50:52
+    Author     : Michael
 --%>
 
 <%@page import="Beans.Estado"%>
@@ -32,14 +32,13 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="ReclamacoesClienteServlet">Reclamações</a></li>
-
+                        <li><a href="/SAC_WEB2/AtendimentosGerente.jsp">Atendimentos</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/SAC_WEB2/ListaFuncionariosGerente.jsp">Funcionários</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="LogoutServlet">Logout</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="AlteracaoDeDadosClienteServlet">Conta</a></li>
                     </ul>
 
                 </div><!-- /.navbar-collapse -->
@@ -194,7 +193,7 @@
                         <div class="col-md-4">
                             <input  type="hidden"  name="acaoForm" class="form-control" value="update">
                             <button type="submit" class="btn btn-warning" >Editar</button>
-                            <button class="btn btn-primary" formaction="ReclamacoesClienteServlet">Voltar</button>
+                            <button class="btn btn-primary" formaction="AtendimentosGerenteServlet">Voltar</button>
                         </div>
                     </div>
                 </fieldset>
@@ -203,7 +202,4 @@
     </div><!-- /.container -->   
 </body>
 </html>
-
-
-
 
