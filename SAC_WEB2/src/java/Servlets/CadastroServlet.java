@@ -5,6 +5,7 @@
  */
 package Servlets;
 
+import Beans.Usuario;
 import DataAccessObject.UsuarioDao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -44,9 +46,32 @@ public class CadastroServlet extends HttpServlet {
             String confsenha = request.getParameter("confSenha");
             
             UsuarioDao nomeDao = new UsuarioDao();
-            Boolean retorno = nomeDao.save(nome, cpf, email, end, 409, "jardim botanico", "80210330", "casa 1", fone, senha, 1, 1, 1);
+            //Essa linha abaixo tava dando erro na hora de compilar aqui, então fiz as linhas abaixo dela.
+            //Boolean retorno = nomeDao.save(nome, cpf, email, end, 409, "jardim botanico", "80210330", "casa 1", fone, senha, 1, 1, 1);
+            //UsuarioDao tem um método save tipo int, ao invés de Boolean.
+            //A UsuarioDao.save espera receber 'Usuario' como parametro, então botei nesse obj
+            Usuario usuarioParaCadastro = new Usuario();
+            usuarioParaCadastro.setNomeUsuario(nome);
+            usuarioParaCadastro.setCpfUsuario(cpf);
+            usuarioParaCadastro.setEmailUsuario(email);
+            usuarioParaCadastro.setRuaUsuario(end);
+            usuarioParaCadastro.setNrUsuario(409);
+            usuarioParaCadastro.setBairroUsuario("jardim botanico");
+            usuarioParaCadastro.setCepUsuario("80210330");
+            usuarioParaCadastro.setComplementoUsuario("casa 1");
+            usuarioParaCadastro.setTelefoneUsuario(fone);
+            usuarioParaCadastro.setSenhaLoginUsuario(senha);
             
-            if (retorno == true){
+            int valorRetorno = nomeDao.save(usuarioParaCadastro); 
+            
+            //Caso o valorRetorno seja 1, vai ficar true, caso contrário fica false.
+            //isso é um if ternário
+            Boolean retorno = valorRetorno == 1 ? true : false;
+            
+
+            
+            //HttpSession session = request.getSession();
+            if (retorno){
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
@@ -59,12 +84,14 @@ public class CadastroServlet extends HttpServlet {
                 out.println("</body>");
                 out.println("</html>");
                 response.sendRedirect("index.jsp");
-
             }
             else{
                 response.sendRedirect("erro.jsp");
             }
                
+        }
+        catch(Exception e){
+            e.printStackTrace();
         }
     }
 

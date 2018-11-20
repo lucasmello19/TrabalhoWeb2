@@ -112,8 +112,8 @@
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
                                 <select name="estado" class="form-control selectpicker" >
                                     <option value=" " >Selecione seu estado</option>
-                                    <c:forEach var="estados" items="${estados}">
-                                        <option value="${estados.id}">${estados.nome}</option>
+                                    <c:forEach var="uf" items="${estados}">
+                                        <option value="${uf.id}">${uf.nome}</option>
                                     </c:forEach>
                                 </select>
                             </div>
