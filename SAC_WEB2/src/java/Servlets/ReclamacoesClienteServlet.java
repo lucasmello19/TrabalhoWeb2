@@ -75,6 +75,7 @@ public class ReclamacoesClienteServlet extends HttpServlet {
                     a.setDescAtendimento("desc 1");
                     a.setSituacaoAtendimento("resolviso");
                     a.setSolucaoAtendimento("solucao 1");
+                    //a.setDtHoraFimAtendimento(dtHoraFimAtendimento);
 
                     list.add(a);
 

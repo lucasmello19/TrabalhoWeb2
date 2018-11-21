@@ -4,12 +4,12 @@
     Author     : LucasMello
 --%>
 
-<%@page import="Beans.Estado"%>
+<%@page import="Model.Estado"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Beans.Cidade"%>
+<%@page import="Model.Cidade"%>
 <%@page import="java.util.List"%>
 <%@page import="DataAccessObject.CidadeDao"%>
-<%@page import="Beans.Usuario"%>
+<%@page import="Model.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

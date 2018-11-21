@@ -12,8 +12,8 @@ import java.sql.Statement;
 public class ConnectionFactory {
     
     //Não apagar!
-    //private static final String URL = "jdbc:mysql://localhost:3306/Web2";
-    //private static final String PASS = "root";
+//    private static final String URL = "jdbc:mysql://localhost:3306/mysql";
+//    private static final String PASS = "";
 
     private static final String URL = "jdbc:mysql://localhost:3306/web2";
     private static final String DRIVER_CLASS_MYSQL = "com.mysql.jdbc.Driver";
