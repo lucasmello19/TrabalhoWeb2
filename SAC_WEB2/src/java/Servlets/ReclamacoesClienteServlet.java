@@ -13,6 +13,8 @@ import DataAccessObject.CategoriaProdDao;
 import DataAccessObject.UsuarioDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -54,9 +56,9 @@ public class ReclamacoesClienteServlet extends HttpServlet {
 
                     if (acaoForm == "insert") {
 
-                    } else if (acaoForm == "insert") {
+                    } else if (acaoForm == "update") {
 
-                    } else if (acaoForm == "insert") {
+                    } else if (acaoForm == "delete") {
 
                     } else {
 
@@ -74,23 +76,34 @@ public class ReclamacoesClienteServlet extends HttpServlet {
                     Atendimento a = new Atendimento();
                     a.setDescAtendimento("desc 1");
                     a.setSituacaoAtendimento("resolviso");
-                    a.setSolucaoAtendimento("solucao 1");
-                    //a.setDtHoraFimAtendimento(dtHoraFimAtendimento);
+                    a.setSituacaoAtendimento("Verificando a causa do problema");
+                    a.setSolucaoAtendimento("-");
+                    
+                    java.sql.Timestamp timestamp1 = java.sql.Timestamp.valueOf("2007-09-23 12:13:10.0");
 
+                    
+                    a.setDtHoraInicioAtendimento(timestamp1);
+                                    
                     list.add(a);
 
                     Atendimento b = new Atendimento();
                     b.setDescAtendimento("desc 2");
-                    b.setSituacaoAtendimento("resolviso");
-                    b.setSolucaoAtendimento("solucao 2");
+                    b.setSituacaoAtendimento("Concluido");
+                    b.setSolucaoAtendimento("Troca do produto");
 
+                    java.sql.Timestamp timestamp2 = java.sql.Timestamp.valueOf("2007-09-22 14:15:10.0");
+
+                    b.setDtHoraInicioAtendimento(timestamp2);
                     list.add(b);
 
                     Atendimento c = new Atendimento();
                     c.setDescAtendimento("desc 3");
-                    c.setSituacaoAtendimento("resolviso");
-                    c.setSolucaoAtendimento("solucao 3");
+                    c.setSituacaoAtendimento("Não avaliado");
+                    c.setSolucaoAtendimento("-");
 
+                    java.sql.Timestamp timestamp3 = java.sql.Timestamp.valueOf("2007-09-21 16:17:10.0");
+
+                    c.setDtHoraInicioAtendimento(timestamp3);
                     list.add(c);
 
                     CategoriaProdDao dao = new CategoriaProdDao();

@@ -214,15 +214,15 @@
 
                                     out.println("<tr>");
                                     out.println("<td>" + a.getDescAtendimento() + "</td>");
-//                                    out.println("<td>" + a.getIdTipoAtendimento().getNomeAtendimento() + "</td>");
-//                                    out.println("<td>" + a.getIdProdAtendimento().getNomeProduto() + "</td>");
-//                                    out.println("<td>" + a.getSituacaoAtendimento()+ "</td>");
-//                                    out.println("<td>" + a.getSolucaoAtendimento() + "</td>");
-//                                    
-//                                    Date date = new Date(a.getDtHoraInicioAtendimento().getTime());
-//                                    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy'/'HH:mm");
-//
-//                                    out.println("<td>" + format.format(date) + "</td>");
+                                    out.println("<td>" + "Reclamação" + "</td>");
+                                    out.println("<td>" + "Chinelo" + "</td>");
+                                    out.println("<td>" + a.getSituacaoAtendimento()+ "</td>");
+                                    out.println("<td>" + a.getSolucaoAtendimento() + "</td>");
+                                    
+                                    Date date = new Date(a.getDtHoraInicioAtendimento().getTime());
+                                    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy' 'HH:mm");
+
+                                    out.println("<td>" + format.format(date) + "</td>");
                                     out.println("<td>");
                                     out.println("<a href='' onclick='openModalEdit("+i+")' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>");  
                                     out.println("<a href='' onclick='openModalDelet("+i+")' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>");
