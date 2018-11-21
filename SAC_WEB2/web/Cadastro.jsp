@@ -4,8 +4,14 @@
     Author     : Michael
 --%>
 
+<%@page import="java.beans.Beans"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="dao" class="DataAccessObject.EstadoDao"/>
+<%@page import="Model.Estado"%>
+<%@page import="DataAccessObject.EstadoDao"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Model.Cidade"%>
+<%@page import="java.util.List"%>
+<%@page import="DataAccessObject.CidadeDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -103,41 +109,50 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Select Estado -->
+                    <%
+                    //<!-- Select Estado -->
 
-                    <div class="form-group"> 
-                        <label class="col-md-4 control-label">Estado</label>
-                        <div class="col-md-4 selectContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                <select name="estado" class="form-control selectpicker" >
-                                    <option value=" " >Selecione seu estado</option>
-                                    <c:forEach var="uf" items="${dao.findAll()}">
-                                        <option value="${uf.estado_id}">${uf.nome}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    out.println("<div class='form-group'> ");
+                        out.println("<label class='col-md-4 control-label'>Estado</label>");
+                        out.println("<div class='col-md-4 selectContainer'>");
+                            out.println("<div class='input-group'>");
+                                out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>");
+                                out.println("<select name='estado' class='form-control selectpicker' >");
+                                    out.println("<option value=' ' >Selecione seu estado</option>");
+                                    if (request.getAttribute("estados") != null) {
+                                        List<Estado> estados = (List<Estado>) request.getAttribute("estados");
 
-                    <!-- Text Cidade-->
+                                        for (Integer i = 0; i < estados.size(); i++) {
+                                            out.println("<option>" + estados.get(i).getNomeEstado()+ "</option>");
+                                        }
+                                    }
+                                out.println("</select>");
+                            out.println("</div>");
+                        out.println("</div>");
+                    out.println("</div>");
 
-                    <div class="form-group"> 
-                        <label class="col-md-4 control-label">Cidade</label>
-                        <div class="col-md-4 selectContainer">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                                <select name="estado" class="form-control selectpicker" >
-                                    <option value=" " >Selecione sua cidade</option>
-                                    <c:forEach var="estados" items="${estados}">
-                                        <option value="${estados.nome}">${estados.nome}</option>
-                                    </c:forEach>
-                                </select>
-                            </div>
-                        </div>
-                    </div> 
+                    //<!-- Text Cidade-->
 
+                    out.println("<div class='form-group'> ");
+                        out.println("<label class='col-md-4 control-label'>Cidade</label>");
+                        out.println("<div class='col-md-4 selectContainer'>");
+                            out.println("<div class='input-group'>");
+                                out.println("<span class='input-group-addon'><i class='glyphicon glyphicon-list'></i></span>");
+                                out.println("<select name='cidade' class='form-control selectpicker' >");
+                                    out.println("<option value=' ' >Selecione sua cidade</option>");
+                                    
+                                    if (request.getAttribute("cidades") != null) {
+                                        List<Cidade> cidades = (List<Cidade>) request.getAttribute("cidades");
+
+                                        for (Integer i = 0; i < cidades.size(); i++) {
+                                            out.println("<option>" + cidades.get(i).getNomeCidade() + "</option>");
+                                        }
+                                    }
+                                out.println("</select>");
+                            out.println("</div>");
+                        out.println("</div>");
+                    out.println("</div>");
+                    %>
                     <!-- radio genero -->
                     <div class="form-group">
                         <label class="col-md-4 control-label">Gênero</label>
@@ -193,7 +208,3 @@
     </div><!-- /.container -->   
 </body>
 </html>
-
-
-
-

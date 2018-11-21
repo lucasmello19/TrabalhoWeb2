@@ -29,7 +29,7 @@ public class EstadoDao {
             rs = pstm.executeQuery();
             while (rs.next()) {
          
-                Estado estado = new Estado();//para cada posição do resultset cria um novo estado   
+                    Estado estado = new Estado();//para cada posição do resultset cria um novo estado   
 
                 estado.setIdEstado(rs.getInt("estado_id"));
                 estado.setNomeEstado(rs.getString("nome"));

@@ -61,8 +61,11 @@ public class CadastroServlet extends HttpServlet {
             usuarioParaCadastro.setBairroUsuario("jardim botanico");
             usuarioParaCadastro.setCepUsuario("80210330");
             usuarioParaCadastro.setComplementoUsuario("casa 1");
+            usuarioParaCadastro.setPerfilUsuario(1);
             usuarioParaCadastro.setTelefoneUsuario(fone);
+            usuarioParaCadastro.setIdCidadeUsuario(1);
             usuarioParaCadastro.setSenhaLoginUsuario(senha);
+            usuarioParaCadastro.setIdEstadoUsuario(1);
 
             int valorRetorno = nomeDao.save(usuarioParaCadastro);
 
@@ -123,7 +126,7 @@ public class CadastroServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    }
+        }
 
     /**
      * Returns a short description of the servlet.

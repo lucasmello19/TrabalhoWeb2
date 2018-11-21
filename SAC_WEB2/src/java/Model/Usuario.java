@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable {
     
-    private int idUsuario;
     private String nomeUsuario;
     private String cpfUsuario;
     private String emailUsuario;
@@ -16,15 +15,13 @@ public class Usuario implements Serializable {
     private String telefoneUsuario;
     private String senhaLoginUsuario;
     private int perfilUsuario;
-    private int loginIdUsuario;
     private int idCidadeUsuario;
     private int idEstadoUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nomeUsuario, String cpfUsuario, String emailUsuario, String ruaUsuario, int nrUsuario, String bairroUsuario, String cepUsuario, String complementoUsuario, String telefoneUsuario, String senhaLoginUsuario, int perfilUsuario, int loginIdUsuario, int idCidadeUsuario, int idEstadoUsuario) {
-        this.idUsuario = idUsuario;
+    public Usuario(String nomeUsuario, String cpfUsuario, String emailUsuario, String ruaUsuario, int nrUsuario, String bairroUsuario, String cepUsuario, String complementoUsuario, String telefoneUsuario, String senhaLoginUsuario, int perfilUsuario, int loginIdUsuario, int idCidadeUsuario, int idEstadoUsuario) {
         this.nomeUsuario = nomeUsuario;
         this.cpfUsuario = cpfUsuario;
         this.emailUsuario = emailUsuario;
@@ -36,17 +33,8 @@ public class Usuario implements Serializable {
         this.telefoneUsuario = telefoneUsuario;
         this.senhaLoginUsuario = senhaLoginUsuario;
         this.perfilUsuario = perfilUsuario;
-        this.loginIdUsuario = loginIdUsuario;
         this.idCidadeUsuario = idCidadeUsuario;
         this.idEstadoUsuario = idEstadoUsuario;
-    }
-
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
     }
 
     public String getNomeUsuario() {
@@ -137,14 +125,6 @@ public class Usuario implements Serializable {
         this.perfilUsuario = perfilUsuario;
     }
 
-    public int getLoginIdUsuario() {
-        return loginIdUsuario;
-    }
-
-    public void setLoginIdUsuario(int loginIdUsuario) {
-        this.loginIdUsuario = loginIdUsuario;
-    }
-
     public int getIdCidadeUsuario() {
         return idCidadeUsuario;
     }
@@ -161,16 +141,16 @@ public class Usuario implements Serializable {
         this.idEstadoUsuario = idEstadoUsuario;
     }
 
-    public void setIdPessoa(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void setIdCidadeUsuario(String itapetininga) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void setIdEstadoUsuario(String são_paulo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    public void setIdPessoa(int aInt) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    public void setIdCidadeUsuario(String itapetininga) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    public void setIdEstadoUsuario(String são_paulo) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
         
 }

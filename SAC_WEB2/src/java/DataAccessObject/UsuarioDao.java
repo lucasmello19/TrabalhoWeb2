@@ -15,7 +15,7 @@ import java.util.List;
 
 public class UsuarioDao {
     
-    private static final String SQL_INSERT = "INSERT INTO tb_usuario (nome_completo, cpf, email, rua, numero, bairro, cep, complemento, telefone, senha, fk_perfil_id, fk_login_id, fk_cidade_id, fk_estado_id) VALUES (?,?,?,?,?,?,?,?,?,?)";
+    private static final String SQL_INSERT = "INSERT INTO tb_usuario (nome_completo, cpf, email, rua, numero, bairro, cep, complemento, telefone, senha, fk_perfil_id, fk_cidade_id, fk_estado_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE tb_usuario SET nome_completo=?, cpf=?, email=?, rua=?, numero=?, barrio=?, cep=?, complemento=?, telefone=?, senha=? WHERE user_id=?";
     private static final String SQL_REMOVE = "DELETE FROM tb_usuario WHERE user_id=?";
     private static final String SQL_FIND_ALL = "SELECT * FROM tb_usuario";
@@ -35,9 +35,7 @@ public class UsuarioDao {
         int result = 0;
         try {
             pstm = conn.prepareStatement(SQL_INSERT);
-            //nome_completo, cpf, email, rua, numero, bairro, cep, complemento, telefone, senha, 
-            //fk_perfil_id, fk_login_id, fk_cidade_id, fk_estado_id) VALUES (?,?,?,?,?,?,?,?,?,?)";
-           
+                      
             pstm.setString(1, usuario.getNomeUsuario());
             pstm.setString(2, usuario.getCpfUsuario());
             pstm.setString(3, usuario.getEmailUsuario());
@@ -51,9 +49,10 @@ public class UsuarioDao {
             pstm.setInt(11, usuario.getPerfilUsuario());
             pstm.setInt(12, usuario.getIdCidadeUsuario());
             pstm.setInt(13, usuario.getIdEstadoUsuario());
+            
 
             //retonar um valor int (1 para sucesso e 2 para insucesso) para retornar para a interface gráfica para verificar o sucesso ou na inserção não 
-            result = pstm.executeUpdate(); 
+            result = pstm.executeUpdate();
 
         } catch (SQLException ex) {
             try {
@@ -90,9 +89,9 @@ public class UsuarioDao {
             pstm.setString(9, usuario.getTelefoneUsuario());
             pstm.setString(10, usuario.getSenhaLoginUsuario());
             pstm.setInt(11, usuario.getPerfilUsuario());
-            pstm.setInt(12, usuario.getLoginIdUsuario());
-            pstm.setInt(13, usuario.getIdCidadeUsuario());
-            pstm.setInt(14, usuario.getIdEstadoUsuario());
+            pstm.setInt(12, usuario.getIdCidadeUsuario());
+            pstm.setInt(13, usuario.getIdEstadoUsuario());
+            
     
             //retonar um valor int (1 para sucesso e 2 para insucesso) para retornar para a interface gráfica para verificar o sucesso ou na inserção não 
             result = pstm.executeUpdate(); 
@@ -156,7 +155,6 @@ public class UsuarioDao {
                    //fk_perfil_id, fk_login_id, fk_cidade_id, fk_estado_id) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
                   Usuario usuario = new Usuario();//para cada posição do resultset cria um novo usuario   
-                  usuario.setIdUsuario(rs.getInt("user_id"));//nome coluna bd
                   usuario.setNomeUsuario(rs.getString("nome_completo"));
                   usuario.setCpfUsuario(rs.getString("cpf"));
                   usuario.setEmailUsuario(rs.getString("email"));
