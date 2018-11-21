@@ -1,15 +1,15 @@
-package Beans;
+package Model;
 
 public class Login {
     
     private int idLogin;
-    private Usuario emailLogin;
-    private Usuario senhaLogin;
+    private String emailLogin;
+    private String senhaLogin;
 
     public Login() {
     }
 
-    public Login(int idLogin, Usuario emailLogin, Usuario senhaLogin) {
+    public Login(int idLogin, String emailLogin, String senhaLogin) {
         this.idLogin = idLogin;
         this.emailLogin = emailLogin;
         this.senhaLogin = senhaLogin;
@@ -23,19 +23,19 @@ public class Login {
         this.idLogin = idLogin;
     }
 
-    public Usuario getEmailLogin() {
+    public String getEmailLogin() {
         return emailLogin;
     }
 
-    public void setEmailLogin(Usuario emailLogin) {
+    public void setEmailLogin(String emailLogin) {
         this.emailLogin = emailLogin;
     }
 
-    public Usuario getSenhaLogin() {
+    public String getSenhaLogin() {
         return senhaLogin;
     }
 
-    public void setSenhaLogin(Usuario senhaLogin) {
+    public void setSenhaLogin(String senhaLogin) {
         this.senhaLogin = senhaLogin;
     }
 

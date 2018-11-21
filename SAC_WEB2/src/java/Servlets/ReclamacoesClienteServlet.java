@@ -5,9 +5,9 @@
  */
 package Servlets;
 
-import Beans.Atendimento;
-import Beans.Categoria;
-import Beans.Usuario;
+import Model.Atendimento;
+import Model.Categoria;
+import Model.Usuario;
 import DataAccessObject.AtendimentoDao;
 import DataAccessObject.CategoriaProdDao;
 import DataAccessObject.UsuarioDao;

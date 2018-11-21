@@ -5,9 +5,9 @@
  */
 package Servlets;
 
-import Beans.Cidade;
-import Beans.Estado;
-import Beans.Usuario;
+import Model.Cidade;
+import Model.Estado;
+import Model.Usuario;
 import DataAccessObject.CidadeDao;
 import DataAccessObject.EstadoDao;
 import DataAccessObject.UsuarioDao;

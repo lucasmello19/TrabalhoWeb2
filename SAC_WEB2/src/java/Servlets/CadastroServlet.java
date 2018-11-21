@@ -5,7 +5,7 @@
  */
 package Servlets;
 
-import Beans.Usuario;
+import Model.Usuario;
 import DataAccessObject.UsuarioDao;
 import java.io.IOException;
 import java.io.PrintWriter;

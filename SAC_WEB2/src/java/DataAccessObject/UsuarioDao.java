@@ -1,8 +1,9 @@
 package DataAccessObject;
 
    
-import Beans.Perfil;
-import Beans.Usuario;
+import Model.Login;
+import Model.Perfil;
+import Model.Usuario;
 import Connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +20,7 @@ public class UsuarioDao {
     private static final String SQL_REMOVE = "DELETE FROM tb_usuario WHERE user_id=?";
     private static final String SQL_FIND_ALL = "SELECT * FROM tb_usuario";
     private static final String SQL_FIND_FILTER = "SELECT * FROM tb_usuario WHERE nome_completo LIKE ? OR cpf LIKE ? OR email LIKE ? OR telefone LIKE ?";
-    private static final String SQL_FIND_LOGIN = "SELECT * FROM tb_usuario WHERE email LIKE ? AND senha LIKE ?";
+    private static final String SQL_FIND_LOGIN = "SELECT * FROM tb_usuario WHERE email LIKE ? AND senha LIKE ? AND  ";
 
 //salvar usuario 
     
@@ -229,49 +230,7 @@ public class UsuarioDao {
             ex.printStackTrace();
         }
         return usuarios;
-
     }
-    
-        public List<Usuario> findLogin() {
-        Connection conn = ConnectionFactory.getConnection();
-        PreparedStatement pstm = null;
-        ResultSet rs = null;
-        
-        //criei um lista do tipo usuario
-        List<Usuario> usuarios = new ArrayList<Usuario>();
-        try {
-            pstm = conn.prepareStatement(SQL_FIND_ALL);
-            rs = pstm.executeQuery();
-            while (rs.next()) {
-               
-                  Usuario usuario = new Usuario();//para cada posição do resultset cria um novo usuario   
-                  
-                  usuario.setEmailUsuario(rs.getString("email"));
-                  usuario.setSenhaLoginUsuario(rs.getString("senha"));
-                  
-                usuarios.add(usuario);
-            }
-
-        } catch (SQLException ex) {
-            try {
-                if (conn != null) {
-                    conn.rollback(); //testar se a conexão não está nula                
-                }
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            } finally {
-                ConnectionFactory.close(conn, pstm, rs);
-            }
-            ex.printStackTrace();
-        }
-        return usuarios;
-
-    }
-
-    public Boolean save(String nome, String cpf, String email, String end, int i, String jardim_botanico, String string, String casa_1, String fone, String senha, int i0, int i1, int i2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }
 
     

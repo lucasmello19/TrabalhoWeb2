@@ -1,5 +1,5 @@
 
-package Beans;
+package Model;
 
 import java.io.Serializable;
 

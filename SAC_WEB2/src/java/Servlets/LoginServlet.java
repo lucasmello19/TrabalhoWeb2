@@ -5,6 +5,7 @@
  */
 package Servlets;
 
+import Model.Usuario;
 import static Connection.ConnectionFactory.status;
 import DataAccessObject.UsuarioDao;
 import java.io.IOException;
@@ -69,6 +70,14 @@ public class LoginServlet extends HttpServlet {
                         break;
                     }
             }
+            
+//            UsuarioDao usu = new UsuarioDao();
+//            Usuario user = new Usuario ();
+//            
+//            try{
+//                user = usu.findLogin().get()
+//            }
+                
 //            Boolean retorno = userDao.carregarPessoas(login, senha);
 //            
 //            HttpSession session = request.getSession();

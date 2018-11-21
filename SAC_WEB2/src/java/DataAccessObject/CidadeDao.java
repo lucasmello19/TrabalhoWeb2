@@ -1,6 +1,6 @@
 package DataAccessObject;
 
-import Beans.Cidade;
+import Model.Cidade;
 import Connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

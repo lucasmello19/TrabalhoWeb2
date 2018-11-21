@@ -1,6 +1,6 @@
 package DataAccessObject;
 
-import Beans.Atendimento;
+import Model.Atendimento;
 import Connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
